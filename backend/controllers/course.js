@@ -1,5 +1,5 @@
 // const courseData = require("../../data/course");
-const Course = require("../../models/course");
+const Course = require("../models/course");
 
 module.exports.allCourses = async (req, res) => {
   let courses = await Course.find({});
