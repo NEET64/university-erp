@@ -1,4 +1,11 @@
 const express = require("express");
+const wrapAsync = require("../utils/wrapAsync");
+const {
+  allFaculties,
+  createFaculty,
+  editFaculty,
+  deleteFaculty,
+} = require("../controllers/faculty");
 const router = express.Router();
 
 router.get("/dashboard", (req, res) => {
@@ -6,5 +13,12 @@ router.get("/dashboard", (req, res) => {
     message: "at the faculty Dashboard",
   });
 });
+
+router.route("/").get(wrapAsync(allFaculties)).post(wrapAsync(createFaculty));
+
+router
+  .route("/:id")
+  .put(wrapAsync(editFaculty))
+  .delete(wrapAsync(deleteFaculty));
 
 module.exports = router;

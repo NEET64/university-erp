@@ -6,12 +6,14 @@ const express = require("express");
 const app = express();
 const port = 8000;
 const mongoose = require("mongoose");
+const ExpressError = require("./utils/ExpressErrors");
 
 // routes
+const courseRouter = require("./routes/course");
 const adminRouter = require("./routes/admin");
 const facultyRouter = require("./routes/faculty");
 const studentRouter = require("./routes/student");
-const ExpressError = require("./utils/ExpressErrors");
+const classRouter = require("./routes/class");
 
 // connect to db
 let main = async () => {
@@ -29,9 +31,11 @@ main()
 app.use(express.json());
 
 // All the Routes
-app.use("/admin/", adminRouter);
-app.use("/faculty/", facultyRouter);
-app.use("/student/", studentRouter);
+app.use("/course", courseRouter);
+app.use("/faculty", facultyRouter);
+app.use("/class", classRouter);
+app.use("/admin", adminRouter);
+app.use("/student", studentRouter);
 
 // if request don't match any route
 app.get("*", (req, res) => {
