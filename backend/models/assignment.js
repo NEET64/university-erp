@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 
-const assignmentSchema = new Schema({
+const assignmentSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -10,7 +9,7 @@ const assignmentSchema = new Schema({
     type: String,
   },
   course: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "Course",
     required: true,
   },

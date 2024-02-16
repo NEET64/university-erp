@@ -14,6 +14,7 @@ const adminRouter = require("./routes/admin");
 const facultyRouter = require("./routes/faculty");
 const studentRouter = require("./routes/student");
 const classRouter = require("./routes/class");
+const attendanceRouter = require("./routes/attendence");
 
 // connect to db
 let main = async () => {
@@ -34,6 +35,7 @@ app.use(express.json());
 app.use("/course", courseRouter);
 app.use("/faculty", facultyRouter);
 app.use("/class", classRouter);
+app.use("/attendance", attendanceRouter);
 app.use("/admin", adminRouter);
 app.use("/student", studentRouter);
 
