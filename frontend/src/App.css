@@ -4,5 +4,10 @@
 }
 
 body {
-  background-color: rgb(174, 174, 174);
+  background: rgb(205, 202, 255);
+  background: linear-gradient(
+    135deg,
+    rgba(205, 202, 255, 1) 0%,
+    rgba(158, 133, 241, 1) 100%
+  );
 }
