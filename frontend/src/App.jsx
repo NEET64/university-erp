@@ -1,8 +1,8 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Admin } from "./page/Admin";
-import { Faculty } from "./page/Faculty";
-import { Student } from "./page/Student";
+import { Admin } from "./pages/Admin";
+import { Faculty } from "./pages/Faculty";
+import { Student } from "./pages/Student";
 
 function App() {
   return (
