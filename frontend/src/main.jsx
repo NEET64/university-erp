@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Faculty } from "./pages/Faculty.jsx";
@@ -15,19 +14,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/faculty/dashboard",
-        element: <Header text="dashboard" />,
+        element: <Header title="Dashboard" />,
       },
       {
         path: "/faculty/attendance",
-        element: <Header text="attendance" />,
+        element: <Header title="Attendance" />,
       },
       {
         path: "/faculty/assignment",
-        element: <Header text="assignment" />,
+        element: <Header title="Assignment" />,
       },
       {
-        path: "/faculty/fees",
-        element: <Header text="fees" />,
+        path: "/faculty/:anything",
+        element: <Header title="Feature Coming Soon" />,
       },
     ],
   },
@@ -38,6 +37,28 @@ const router = createBrowserRouter([
   {
     path: "/student",
     element: <Student />,
+    children: [
+      {
+        path: "/student/dashboard",
+        element: <Header title="Dashboard" />,
+      },
+      {
+        path: "/student/attendance",
+        element: <Header title="Attendance" />,
+      },
+      {
+        path: "/student/assignment",
+        element: <Header title="Assignment" />,
+      },
+      {
+        path: "/student/fees",
+        element: <Header title="Fees" />,
+      },
+      {
+        path: "/student/:anything",
+        element: <Header title="Feature Coming Soon" />,
+      },
+    ],
   },
 ]);
 

@@ -1,7 +1,7 @@
 const Student = require("../models/student");
 
 module.exports.allStudents = async (req, res) => {
-  let students = await Student.find({});
+  let students = await Student.find({}).populate("class");
   res.json({
     students: students,
   });
