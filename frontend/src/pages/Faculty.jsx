@@ -2,7 +2,6 @@ import Sidebar, { SidebarItem } from "../components/Sidebar";
 import {
   LayoutDashboard,
   CalendarDays,
-  HandCoins,
   NotebookPen,
   Settings,
   HelpCircle,

@@ -6,6 +6,7 @@ import { Faculty } from "./pages/Faculty.jsx";
 import { Admin } from "./pages/Admin.jsx";
 import { Student } from "./pages/Student.jsx";
 import { Header } from "./components/header.jsx";
+import { AttendanceFrom } from "./pages/Faculty.Attendence";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/faculty/attendance",
-        element: <Header title="Attendance" />,
+        element: <AttendanceFrom />,
       },
       {
         path: "/faculty/assignment",

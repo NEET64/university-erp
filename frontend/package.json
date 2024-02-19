@@ -11,10 +11,17 @@
     "start": "npm run dev"
   },
   "dependencies": {
+    "@radix-ui/react-select": "^2.0.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "lucide-react": "^0.334.0",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0",
-    "recoil": "^0.7.7"
+    "recoil": "^0.7.7",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
