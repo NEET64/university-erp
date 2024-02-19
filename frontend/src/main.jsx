@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Faculty } from "./pages/Faculty.jsx";
 import { Admin } from "./pages/Admin.jsx";
 import { Student } from "./pages/Student.jsx";
-import { Header } from "./components/header.jsx";
+import { Header } from "./components/Header.jsx";
 
 const router = createBrowserRouter([
   {
