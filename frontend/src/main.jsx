@@ -5,7 +5,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Faculty } from "./pages/Faculty.jsx";
 import { Admin } from "./pages/Admin.jsx";
 import { Student } from "./pages/Student.jsx";
-import { Header } from "./components/header.jsx";
+import { Header } from "./components/ui/Header.jsx";
 import { AttendanceFrom } from "./pages/Faculty.Attendence";
 
 const router = createBrowserRouter([

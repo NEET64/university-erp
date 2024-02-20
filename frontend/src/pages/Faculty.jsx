@@ -1,4 +1,4 @@
-import Sidebar, { SidebarItem } from "../components/Sidebar";
+import Sidebar, { SidebarItem } from "../components/ui/Sidebar";
 import {
   LayoutDashboard,
   CalendarDays,

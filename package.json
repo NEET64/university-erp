@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "lucide-react": "^0.331.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19"
   }
 }
