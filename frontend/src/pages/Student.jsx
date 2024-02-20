@@ -8,7 +8,7 @@ import {
   HelpCircle,
 } from "lucide-react";
 import { RecoilRoot } from "recoil";
-import { Header } from "../components/header";
+import { Header } from "../components/Header";
 
 export const Student = () => {
   return (
