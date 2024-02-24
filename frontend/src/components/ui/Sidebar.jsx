@@ -11,7 +11,7 @@ export default function Sidebar({ children }) {
   const [expanded, setExpanded] = useRecoilState(expandedState);
 
   return (
-    <aside className="h-screen p-2 ">
+    <aside className="h-screen p-2 sticky top-0">
       <nav
         className="h-full flex flex-col
         bg-white rounded-lg shadow-2xl">

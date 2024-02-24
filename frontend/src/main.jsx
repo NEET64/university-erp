@@ -6,7 +6,8 @@ import { Faculty } from "./pages/Faculty.jsx";
 import { Admin } from "./pages/Admin.jsx";
 import { Student } from "./pages/Student.jsx";
 import { Header } from "./components/ui/Header.jsx";
-import { AttendanceFrom } from "./pages/Faculty.Attendence";
+import { Attendance } from "./pages/Faculty/Attendence";
+import { DemoForm } from "./components/DemoForm";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/faculty/attendance",
-        element: <AttendanceFrom />,
+        element: <DemoForm />,
       },
       {
         path: "/faculty/assignment",
@@ -64,7 +65,5 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <RouterProvider router={router} />
 );

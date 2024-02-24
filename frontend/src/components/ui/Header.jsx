@@ -9,11 +9,11 @@ import { Form } from "react-router-dom";
 export const Header = ({ title }) => {
   return (
     // <div className="col-span-8 bg-white rounded-lg my-2 flex items-center pl-6 pr-4 py-2 justify-between">
-    <div className="col-span-8  rounded-lg my-2 flex items-center pl-6 pr-4 justify-between">
+    <div className="col-span-8  rounded-lg my-2 flex items-center justify-between">
       <h1 className="text-4xl text-white font-sans">{title}</h1>
 
       <div className=" flex gap-1 items-center">
-        <Form method="post" action="/events" className="max-w-md mx-auto">
+        <form method="post" action="" className="max-w-md mx-auto">
           <div className="relative">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3">
               <svg
@@ -38,7 +38,7 @@ export const Header = ({ title }) => {
               placeholder="Search..."
             />
           </div>
-        </Form>
+        </form>
 
         <Icon icon={<MessageSquareText size={20} />} />
         <Icon icon={<Bell size={20} />} />

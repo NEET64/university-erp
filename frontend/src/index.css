@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background: linear-gradient(135deg, rgb(56, 189, 248), rgb(37, 99, 235));
+  background: linear-gradient(90deg, rgb(56, 189, 248), rgb(37, 99, 235));
 }
