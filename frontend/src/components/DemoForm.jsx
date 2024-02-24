@@ -31,6 +31,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import { Cards } from "./Cards";
 
 const formSchema = z.object({
   course: z.string(),
@@ -58,6 +59,9 @@ export const DemoForm = () => {
 
   const [courses, setCourses] = useState([]);
   const [classes, setClass] = useState([]);
+  const [students, setStudents] = useState([]);
+  const [classId, setClassId] = useState("");
+
   useEffect(() => {
     axios.get("http://localhost:8000/course").then((response) => {
       setCourses(response.data.courses);
@@ -67,6 +71,14 @@ export const DemoForm = () => {
     });
   }, []);
 
+  useEffect(() => {
+    console.log("here" + classId);
+    axios
+      .get("http://localhost:8000/student?id=" + classId)
+      .then((response) => {
+        setStudents(response.data.students);
+      });
+  }, [classId]);
   return (
     <div className="py-2">
       <Form {...form}>
@@ -105,7 +117,10 @@ export const DemoForm = () => {
               <FormItem>
                 <FormLabel>Class</FormLabel>
                 <Select
-                  onValueChange={field.onChange}
+                  onValueChange={(value) => {
+                    setClassId(value);
+                    field.onChange;
+                  }}
                   defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
@@ -207,9 +222,13 @@ export const DemoForm = () => {
             )}
           />
 
-          <Button type="submit">Submit</Button>
+          <Button type="submit" className="mt-3">
+            Submit
+          </Button>
         </form>
       </Form>
+
+      <Cards students={students} />
     </div>
   );
 };

@@ -8,11 +8,13 @@ import { Student } from "./pages/Student.jsx";
 import { Header } from "./components/ui/Header.jsx";
 import { Attendance } from "./pages/Faculty/Attendence";
 import { DemoForm } from "./components/DemoForm";
+import { StudentDashboard } from "./pages/Student/Dashboard";
+import { HarshComp } from "./components/HarshCom";
 
 const router = createBrowserRouter([
   {
     path: "/faculty",
-    element: <Faculty />,
+    element: <Faculty className="bg-red-100" />,
     children: [
       {
         path: "/faculty/dashboard",
@@ -24,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/faculty/assignment",
-        element: <Header title="Assignment" />,
+        element: <HarshComp />,
       },
       {
         path: "/faculty/:anything",
@@ -42,7 +44,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/student/dashboard",
-        element: <Header title="Dashboard" />,
+        element: <StudentDashboard />,
       },
       {
         path: "/student/attendance",
