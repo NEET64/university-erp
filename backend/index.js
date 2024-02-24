@@ -7,6 +7,10 @@ const app = express();
 const port = 8000;
 const mongoose = require("mongoose");
 const ExpressError = require("./utils/ExpressErrors");
+const cors = require("cors");
+
+// allow access of api
+app.use(cors());
 
 // routes
 const courseRouter = require("./routes/course");
