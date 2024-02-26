@@ -8,7 +8,7 @@ import {
   HelpCircle,
 } from "lucide-react";
 import { RecoilRoot } from "recoil";
-import { Header } from "../components/Header";
+import { Outlet } from "react-router-dom";
 
 export const Student = () => {
   return (
@@ -19,25 +19,16 @@ export const Student = () => {
             icon={<LayoutDashboard size={20} />}
             text={"Dashboard"}
           />
-          <SidebarItem
-            icon={<CalendarDays size={20} />}
-            text={"Attendance"}
-            active
-          />
-          <SidebarItem
-            icon={<NotebookPen size={20} />}
-            text={"Assignment"}
-            alert
-          />
-          <SidebarItem icon={<HandCoins size={20} />} text={"Fees"} alert />
+          <SidebarItem icon={<CalendarDays size={20} />} text={"Attendance"} />
+          <SidebarItem icon={<NotebookPen size={20} />} text={"Assignment"} />
+          <SidebarItem icon={<HandCoins size={20} />} text={"Fees"} />
           <hr className="my-3" />
           <SidebarItem icon={<Settings size={20} />} text={"Settings"} />
           <SidebarItem icon={<HelpCircle size={20} />} text={"Help"} />
         </Sidebar>
-        <div className="flex-1 grid grid-cols-8 grid-rows-9 mr-2 pb-2 ">
-          <Header />
-          <div className="col-span-6 row-span-8 row-start-2 bg-white opacity-10 shadow-lg rounded-lg mr-2"></div>
-          <div className="col-span-2 row-span-8 col-start-7 row-start-2 bg-white opacity-10 shadow-lg rounded-lg"></div>
+
+        <div className="flex-1 my-2 mr-2 flex flex-col">
+          <Outlet />
         </div>
       </div>
     </RecoilRoot>

@@ -1,6 +1,6 @@
 import { ChevronLeft, LogOut, Menu } from "lucide-react";
 import { atom, useRecoilState, useRecoilValue } from "recoil";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const expandedState = atom({
   key: "expandedState",
@@ -11,7 +11,7 @@ export default function Sidebar({ children }) {
   const [expanded, setExpanded] = useRecoilState(expandedState);
 
   return (
-    <aside className="h-screen p-2 ">
+    <aside className="h-screen p-2 sticky top-0">
       <nav
         className="h-full flex flex-col
         bg-white rounded-lg shadow-2xl">
@@ -30,9 +30,9 @@ export default function Sidebar({ children }) {
           </button>
         </div>
 
-        <ul className="flex-1 px-3">{children}</ul>
+        <ul className="flex-1 px-3 py-2">{children}</ul>
 
-        <ul className="px-3 pb-2 border-t">
+        <ul className="px-3 py-2 border-t">
           <SidebarItem
             icon={<LogOut size={20} />}
             text={"Logout"}
@@ -44,47 +44,46 @@ export default function Sidebar({ children }) {
   );
 }
 
-export function SidebarItem({ icon, text, active, alert }) {
+export function SidebarItem({ icon, text, alert }) {
   const expanded = useRecoilValue(expandedState);
 
   return (
-    <li
-      className={`
-        relative flex items-center py-2 px-3 my-1
-        font-medium rounded-md cursor-pointer
-        transition-colors group
-        ${
-          active
-            ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
-            : "hover:bg-indigo-50 text-gray-600"
-        }
-    `}>
-      {icon}
-      <span
-        className={`overflow-hidden transition-all ${
-          expanded ? "w-52 ml-3" : "w-0"
-        }`}>
-        {text}
-      </span>
-      {alert && (
-        <div
-          className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 ${
-            expanded ? "" : "top-2"
-          }`}
-        />
-      )}
+    <li className={"rounded-md"}>
+      <NavLink
+        key={text}
+        to={text}
+        className={({ isActive }) =>
+          isActive
+            ? " bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group"
+            : "hover:bg-indigo-50 text-gray-600 relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group"
+        }>
+        {icon}
+        <span
+          className={`overflow-hidden transition-all ${
+            expanded ? " w-48 ml-3" : "w-0"
+          }`}>
+          {text}
+        </span>
+        {alert && (
+          <div
+            className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 ${
+              expanded ? "" : "top-2"
+            }`}
+          />
+        )}
 
-      {!expanded && (
-        <div
-          className={`
+        {!expanded && (
+          <div
+            className={`
             absolute left-full rounded-md px-2 py-1 ml-6
             bg-indigo-100 text-indigo-800 text-sm
             invisible opacity-20 -translate-x-3 transition-all
             group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
           `}>
-          {text}
-        </div>
-      )}
+            {text}
+          </div>
+        )}
+      </NavLink>
     </li>
   );
 }
