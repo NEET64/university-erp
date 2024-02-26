@@ -5,16 +5,16 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Faculty } from "./pages/Faculty.jsx";
 import { Admin } from "./pages/Admin.jsx";
 import { Student } from "./pages/Student.jsx";
-import { Header } from "./components/ui/Header.jsx";
+import { Header } from "./components/Header.jsx";
 import { Attendance } from "./pages/Faculty/Attendence";
 import { DemoForm } from "./components/DemoForm";
 import { StudentDashboard } from "./pages/Student/Dashboard";
-import { HarshComp } from "./components/HarshCom";
+import { Course } from "./pages/Admin/Course";
 
 const router = createBrowserRouter([
   {
     path: "/faculty",
-    element: <Faculty className="bg-red-100" />,
+    element: <Faculty />,
     children: [
       {
         path: "/faculty/dashboard",
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/faculty/assignment",
-        element: <HarshComp />,
+        element: <Header title="Assignment" />,
       },
       {
         path: "/faculty/:anything",
@@ -37,6 +37,20 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Admin />,
+    children: [
+      {
+        path: "/admin/dashboard",
+        element: <Header title="Dashboard" />,
+      },
+      {
+        path: "/admin/course",
+        element: <Course />,
+      },
+      {
+        path: "/admin/:anything",
+        element: <Header title="Feature Coming Soon" />,
+      },
+    ],
   },
   {
     path: "/student",

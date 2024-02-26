@@ -1,4 +1,4 @@
-import Sidebar, { SidebarItem } from "../components/ui/Sidebar";
+import Sidebar, { SidebarItem } from "../components/Sidebar";
 import {
   LayoutDashboard,
   CalendarDays,
@@ -27,11 +27,9 @@ export const Student = () => {
           <SidebarItem icon={<HelpCircle size={20} />} text={"Help"} />
         </Sidebar>
 
-        {/* <div className="flex-1 p-2 mr-2 pb-2 ">
+        <div className="flex-1 my-2 mr-2 flex flex-col">
           <Outlet />
-        </div> */}
-
-        <Outlet />
+        </div>
       </div>
     </RecoilRoot>
   );
