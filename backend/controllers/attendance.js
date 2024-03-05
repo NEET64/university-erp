@@ -4,7 +4,10 @@ module.exports.getAttandence = async (req, res) => {
   let { studentId } = req.params;
   let studentAttendance = await Attendance.find({
     students: { $in: [studentId] },
-  }).select("date status");
+  })
+    .select("date status")
+    .populate("course", "code name")
+    .populate("faculty", "name");
 
   res.json({
     attendance: studentAttendance,
