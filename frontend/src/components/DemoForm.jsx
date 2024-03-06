@@ -32,6 +32,7 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { Cards } from "./Cards";
+import { Checkbox } from "./ui/checkbox";
 
 const formSchema = z.object({
   course: z.string(),
@@ -54,9 +55,12 @@ export const DemoForm = () => {
   });
 
   const onSubmit = (values) => {
+    values.faculty = "65c5e6db85c4191c88d6e2ce";
+    axios.post("http://localhost:8000/attendance", values).then((response) => {
+      console.log("Done");
+    });
     console.log(values);
   };
-
   const [courses, setCourses] = useState([]);
   const [classes, setClass] = useState([]);
   const [students, setStudents] = useState([]);
@@ -72,19 +76,23 @@ export const DemoForm = () => {
   }, []);
 
   useEffect(() => {
-    console.log("here" + classId);
     axios
       .get("http://localhost:8000/student?id=" + classId)
       .then((response) => {
         setStudents(response.data.students);
       });
   }, [classId]);
+
+  const handleFieldChange = (event) => {
+    console.log(event);
+    setClassId(event); // Call field.onChange if necessary
+  };
   return (
     <div className="py-2">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="bg-white rounded-lg p-3 w-56 shadow-lg">
+          className="bg-white rounded-lg p-3 shadow-lg flex justify-between">
           <FormField
             control={form.control}
             name="course"
@@ -117,9 +125,11 @@ export const DemoForm = () => {
               <FormItem>
                 <FormLabel>Class</FormLabel>
                 <Select
-                  onValueChange={(value) => {
-                    setClassId(value);
-                    field.onChange;
+                  // onValueChange={field.onChange}
+                  onValueChange={(event) => {
+                    // Update state or call an action here
+                    setClassId(event); // Assuming setClassId updates state
+                    field.onChange(event); // Call field.onChange if necessary
                   }}
                   defaultValue={field.value}>
                   <FormControl>
@@ -134,6 +144,7 @@ export const DemoForm = () => {
                       </SelectItem>
                     ))}
                   </SelectContent>
+                  <FormMessage />
                 </Select>
               </FormItem>
             )}
@@ -222,6 +233,54 @@ export const DemoForm = () => {
             )}
           />
 
+          <FormField
+            control={form.control}
+            name="students"
+            render={() => (
+              <FormItem>
+                <div className="mb-4">
+                  <FormLabel className="text-base">Sidebar</FormLabel>
+                </div>
+                {students.map((student) => (
+                  <FormField
+                    key={student._id}
+                    control={form.control}
+                    name="students"
+                    render={({ field }) => {
+                      return (
+                        <FormItem
+                          key={student._id}
+                          className="flex flex-row items-center space-x-3 space-y-0">
+                          <FormControl>
+                            <Checkbox
+                              checked={field.value?.includes(student._id)}
+                              onCheckedChange={(checked) => {
+                                return checked
+                                  ? field.onChange([
+                                      ...field.value,
+                                      student._id,
+                                    ])
+                                  : field.onChange(
+                                      field.value?.filter(
+                                        (value) => value !== student._id
+                                      )
+                                    );
+                              }}
+                            />
+                          </FormControl>
+                          <FormLabel className="text-sm font-normal">
+                            {student.name}
+                          </FormLabel>
+                        </FormItem>
+                      );
+                    }}
+                  />
+                ))}
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           <Button type="submit" className="mt-3">
             Submit
           </Button>
@@ -229,6 +288,7 @@ export const DemoForm = () => {
       </Form>
 
       <Cards students={students} />
+      {/* <Attendance /> */}
     </div>
   );
 };

@@ -11,6 +11,7 @@ import { useMemo } from "react";
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export const Calendar = ({ events }) => {
+  console.log(events);
   const currentDate = new Date();
   const firstDayOfMonth = startOfMonth(currentDate);
   const lastDayOfMonth = endOfMonth(currentDate);
@@ -63,7 +64,7 @@ export const Calendar = ({ events }) => {
               {todaysEvent.map((event) => {
                 return (
                   <div className="rounded m-2 bg-green-400" key={event.date}>
-                    {event.title}
+                    {event.course.name}
                   </div>
                 );
               })}
