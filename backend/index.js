@@ -19,6 +19,7 @@ const facultyRouter = require("./routes/faculty");
 const studentRouter = require("./routes/student");
 const classRouter = require("./routes/class");
 const attendanceRouter = require("./routes/attendence");
+const assignmentRouter = require("./routes/assignment");
 
 // connect to db
 let main = async () => {
@@ -42,6 +43,7 @@ app.use("/class", classRouter);
 app.use("/attendance", attendanceRouter);
 app.use("/admin", adminRouter);
 app.use("/student", studentRouter);
+app.use("/assignment", assignmentRouter);
 
 // if request don't match any route
 app.get("*", (req, res) => {

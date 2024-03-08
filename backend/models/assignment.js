@@ -8,6 +8,31 @@ const assignmentSchema = new mongoose.Schema({
   aim: {
     type: String,
   },
+  class: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Class",
+  },
+  faculty: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Faculty",
+  },
+  students: [
+    {
+      student: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Student",
+      },
+      isSubmited: {
+        type: Boolean,
+        default: false,
+      },
+      obtainedMarks: {
+        type: Number,
+        default: 0,
+      },
+    },
+  ],
+
   course: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Course",
