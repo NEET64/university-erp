@@ -5,7 +5,7 @@ module.exports.getStudentAttendance = async (req, res) => {
   let studentAttendance = await Attendance.find({
     students: { $in: [studentId] },
   })
-    .select("date status")
+    .select("date lecture")
     .populate("course", "code name")
     .populate("faculty", "name");
 
@@ -16,7 +16,7 @@ module.exports.getStudentAttendance = async (req, res) => {
 
 module.exports.getAllAttendance = async (req, res) => {
   let studentAttendance = await Attendance.find({})
-    .select("date status")
+    .select("date lecture")
     .populate("course", "code name")
     .populate("faculty", "name");
 
