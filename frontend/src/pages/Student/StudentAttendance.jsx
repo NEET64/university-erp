@@ -1,7 +1,6 @@
 import { Calendar } from "@/components/Calendar";
 import { Header } from "@/components/Header";
 import axios from "axios";
-import { addDays, subDays } from "date-fns";
 import { useEffect, useState } from "react";
 
 export const StudentAttendance = () => {
@@ -9,7 +8,6 @@ export const StudentAttendance = () => {
 
   useEffect(() => {
     axios.get("http://localhost:8000/attendance/").then((response) => {
-      console.log(response.data);
       setAttendance(response.data.attendance);
     });
   }, []);

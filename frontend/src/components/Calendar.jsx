@@ -10,17 +10,16 @@ import {
 } from "date-fns";
 import { useMemo, useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export const Calendar = ({ events, belongsTo }) => {
-  // const [currentDate, setCurrentDate] = useState(new Date());
   const [dayOffset, setDayOffset] = useState(0);
-  // const currentDate = new Date();
   const currentDate =
     dayOffset < 0
       ? subMonths(new Date(), Math.abs(dayOffset))
-      : addMonths(new Date(), Math.abs(dayOffset));
+      : addMonths(new Date(), dayOffset);
   const firstDayOfMonth = startOfMonth(currentDate);
   const lastDayOfMonth = endOfMonth(currentDate);
 
@@ -35,7 +34,6 @@ export const Calendar = ({ events, belongsTo }) => {
     let obj = [];
     events.forEach((event) => {
       const dateKey = format(event.date, "yyyy-MM-dd");
-      // console.log(dateKey);
       if (!obj[dateKey]) obj[dateKey] = [];
       obj[dateKey].push(event);
     });
@@ -50,18 +48,18 @@ export const Calendar = ({ events, belongsTo }) => {
         </h2>
         <div>
           <button
-            className="bg-slate-500 m-2 px-2 rounded-md text-white"
+            className="m-2 p-1 rounded-md bg-white"
             onClick={() => {
               setDayOffset(dayOffset - 1);
             }}>
-            prev
+            <ChevronLeft />
           </button>
           <button
-            className="bg-slate-500 m-2 px-2 rounded-md text-white"
+            className="m-2 p-1 rounded-md bg-white"
             onClick={() => {
               setDayOffset(dayOffset + 1);
             }}>
-            next
+            <ChevronRight />
           </button>
         </div>
       </div>
@@ -98,9 +96,10 @@ export const Calendar = ({ events, belongsTo }) => {
                       </div>
                     </PopoverTrigger>
                     <PopoverContent>
-                      <div>{event.course.name}</div>
-                      <div>{event.faculty.name}</div>
-                      <div>{event.lecture}</div>
+                      {console.log(event)}
+                      <div>Course: {event.course.name}</div>
+                      <div>Faculty: {event.faculty.name}</div>
+                      <div>Lecture: {event.lecture}</div>
                     </PopoverContent>
                   </Popover>
                 );
