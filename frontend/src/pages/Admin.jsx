@@ -34,7 +34,7 @@ export const Admin = () => {
           <SidebarItem icon={<HelpCircle size={20} />} text={"Help"} />
         </Sidebar>
 
-        <div className="flex-1 my-2 mr-2">
+        <div className="h-screen flex-1 my-2 mx-2">
           <Outlet />
         </div>
 

@@ -76,7 +76,7 @@ export function DataTable({ columns, data }) {
   });
 
   return (
-    <div>
+    <div className=" min-w-max max-w-7xl">
       <DataTableToolbar table={table} />
 
       <div className="mt-2">
