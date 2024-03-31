@@ -1,6 +1,14 @@
 import { ChevronLeft, LogOut, Menu } from "lucide-react";
 import { atom, useRecoilState, useRecoilValue } from "recoil";
 import { NavLink } from "react-router-dom";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { useMediaQuery } from "react-responsive";
+import { useEffect } from "react";
 
 const expandedState = atom({
   key: "expandedState",
@@ -9,9 +17,16 @@ const expandedState = atom({
 
 export default function Sidebar({ children }) {
   const [expanded, setExpanded] = useRecoilState(expandedState);
+  const isMedium = useMediaQuery({ maxWidth: 991 });
+
+  useEffect(() => {
+    if (isMedium) {
+      setExpanded(false);
+    } else setExpanded(true);
+  }, [isMedium, setExpanded]);
 
   return (
-    <aside className="h-screen p-2 sticky top-0">
+    <aside className="h-screen p-2 sticky top-0 z-50">
       <nav
         className="h-full flex flex-col
         bg-white rounded-lg shadow-2xl">
@@ -75,14 +90,25 @@ export function SidebarItem({ icon, text, alert }) {
         {!expanded && (
           <div
             className={`
-            absolute left-full rounded-md px-2 py-1 ml-6
+            absolute left-full rounded-md px-2 py-1 ml-6 
             bg-indigo-100 text-indigo-800 text-sm
             invisible opacity-20 -translate-x-3 transition-all
-            group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
+            group-hover:visible group-hover:opacity-100 group-hover:translate-x-0 z-10
           `}>
             {text}
           </div>
         )}
+        {/* 
+        {!expanded && (
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>{text}</TooltipTrigger>
+              <TooltipContent>
+                <p>Add to library</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        )} */}
       </NavLink>
     </li>
   );

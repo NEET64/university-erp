@@ -10,6 +10,7 @@ module.exports.allCourses = async (req, res) => {
 
 module.exports.createCourse = async (req, res) => {
   let body = req.body;
+  console.log(body);
 
   let course = new Course(body);
   await course.save();

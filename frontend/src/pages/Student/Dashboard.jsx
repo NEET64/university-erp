@@ -11,7 +11,7 @@ export const StudentDashboard = () => {
         <div className="bg-white rounded-lg col-span-2 col-start-5"></div>
         <div className="bg-white rounded-lg col-span-3 row-span-3 col-start-9 row-start-1"></div>
         <div className="bg-white rounded-lg col-span-2 col-start-7 row-start-1"></div>
-        <div className="bg-white rounded-lg col-span-5 row-span-4 row-start-2 relative">
+        <div className="bg-white  rounded-lg col-span-5 row-span-4 row-start-2 relative">
           <Chart />
         </div>
         <div className="bg-white rounded-lg col-span-3 row-span-4 col-start-6 row-start-2"></div>
