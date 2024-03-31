@@ -5,6 +5,7 @@ import {
   Bell,
 } from "lucide-react";
 import { Form } from "react-router-dom";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 
 export const Header = ({ title }) => {
   return (
@@ -34,7 +35,7 @@ export const Header = ({ title }) => {
             <input
               type="search"
               id="default-search"
-              className="h-10 w-80 ps-10 pr-3 text-sm text-gray-900 border border-gray-300 rounded-full bg-white focus:outline-none  focus:ring-4 focus:ring-indigo-300 focus:border-indigo-400"
+              className="h-10 md:w-80 w-50 ps-10 pr-3 text-sm text-gray-900 border border-gray-300 rounded-full bg-white focus:outline-none  focus:ring-4 focus:ring-indigo-300 focus:border-indigo-400"
               placeholder="Search..."
             />
           </div>
@@ -43,25 +44,23 @@ export const Header = ({ title }) => {
         <Icon icon={<MessageSquareText size={20} />} />
         <Icon icon={<Bell size={20} />} />
 
-        <img
-          src="https://api.multiavatar.com/neet.svg"
-          alt=""
-          className="w-12 h-12 rounded-md"
-        />
-        {/* <div
-          className={`
-            flex justify-between items-center ml-3}
-        `}>
-          <div className="leading-4 text-right">
-            <h4 className="font-semibold">Neet Dhameliya</h4>
-            <span className=" text-xs text-gray-600">
-              21se02cs021@ppsu.ac.in
-            </span>
-          </div>
-        </div> */}
-        {/* <div className="flex items-center">
-          <MoreVertical size={20} />
-        </div> */}
+        <HoverCard openDelay={200} closeDelay={200}>
+          <HoverCardTrigger>
+            <img
+              src="https://api.multiavatar.com/neet.svg"
+              alt="student_avatar"
+              className="w-12 h-12 rounded-md"
+            />
+          </HoverCardTrigger>
+          <HoverCardContent className="w-auto p-3 mr-2">
+            <div className="leading-4 text-right">
+              <h4 className="font-semibold">Neet Dhameliya</h4>
+              <span className="text-xs text-gray-600">
+                21se02cs021@ppsu.ac.in
+              </span>
+            </div>
+          </HoverCardContent>
+        </HoverCard>
       </div>
     </div>
   );

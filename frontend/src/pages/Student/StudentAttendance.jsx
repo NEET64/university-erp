@@ -7,9 +7,11 @@ export const StudentAttendance = () => {
   const [attendance, setAttendance] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/attendance/").then((response) => {
-      setAttendance(response.data.attendance);
-    });
+    axios
+      .get("http://localhost:8000/attendance/65c657dbaf0982c4aebeedc1")
+      .then((response) => {
+        setAttendance(response.data.attendance);
+      });
   }, []);
 
   return (
