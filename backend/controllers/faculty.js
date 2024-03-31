@@ -38,3 +38,10 @@ module.exports.deleteFaculty = async (req, res) => {
     message: `${faculty.name} deleted`,
   });
 };
+
+module.exports.facultyCourses = async (req, res) => {
+  let { id } = req.params;
+  let faculty = await Faculty.findById(id).populate("courses", "name");
+
+  res.json(faculty.courses);
+};

@@ -6,10 +6,13 @@ import { Faculty } from "./pages/Faculty.jsx";
 import { Admin } from "./pages/Admin.jsx";
 import { Student } from "./pages/Student.jsx";
 import { Header } from "./components/Header.jsx";
-import { Attendance } from "./pages/Faculty/Attendence";
+import { Attendance } from "./pages/Faculty/Attendance";
 import { DemoForm } from "./components/DemoForm";
 import { StudentDashboard } from "./pages/Student/Dashboard";
-import { Course } from "./pages/Admin/Course";
+
+import { StudentAttendance } from "./pages/Student/StudentAttendance";
+import { Assignment } from "./pages/Faculty/Assignment";
+import { StudentAssignment } from "./pages/Student/StudentAssignment";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/faculty/assignment",
-        element: <Header title="Assignment" />,
+        element: <Assignment />,
       },
       {
         path: "/faculty/:anything",
@@ -44,7 +47,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/course",
-        element: <Course />,
+        element: <Header title="Dashboard" />,
       },
       {
         path: "/admin/:anything",
@@ -62,11 +65,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/student/attendance",
-        element: <Header title="Attendance" />,
+        element: <StudentAttendance />,
       },
       {
         path: "/student/assignment",
-        element: <Header title="Assignment" />,
+        element: <StudentAssignment />,
       },
       {
         path: "/student/fees",
