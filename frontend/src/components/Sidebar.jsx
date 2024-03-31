@@ -1,12 +1,7 @@
 import { ChevronLeft, LogOut, Menu } from "lucide-react";
 import { atom, useRecoilState, useRecoilValue } from "recoil";
 import { NavLink } from "react-router-dom";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+git;
 import { useMediaQuery } from "react-responsive";
 import { useEffect } from "react";
 
