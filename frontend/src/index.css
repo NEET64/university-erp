@@ -8,5 +8,8 @@
 }
 
 body {
-  background: linear-gradient(90deg, rgb(56, 189, 248), rgb(37, 99, 235));
+  background: linear-gradient(90deg, rgb(56, 189, 248), rgb(37, 99, 235))
+    rgb(37, 99, 235);
+  background-repeat: no-repeat;
+  background-size: cover;
 }

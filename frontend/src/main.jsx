@@ -1,16 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import { Faculty } from "./pages/Faculty.jsx";
 import { Admin } from "./pages/Admin.jsx";
 import { Student } from "./pages/Student.jsx";
 import { Header } from "./components/Header.jsx";
-import { Attendance } from "./pages/Faculty/Attendance";
-import { DemoForm } from "./components/DemoForm";
+import {
+  FacultyAttendance,
+  FacultyAttendanceCalender,
+} from "./pages/Faculty/FacultyAttendance";
 import { StudentDashboard } from "./pages/Student/Dashboard";
 import { Course } from "./pages/Admin/Course";
 import { StudentAttendance } from "./pages/Student/StudentAttendance";
+import { AttendanceForm } from "./components/AttendanceForm";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +30,21 @@ const router = createBrowserRouter([
       },
       {
         path: "/faculty/attendance",
-        element: <DemoForm />,
+        element: <FacultyAttendance />,
+        children: [
+          {
+            path: "/faculty/attendance",
+            element: <Navigate to="/faculty/attendance/view" replace />,
+          },
+          {
+            path: "/faculty/attendance/view",
+            element: <FacultyAttendanceCalender />,
+          },
+          {
+            path: "/faculty/attendance/post",
+            element: <AttendanceForm />,
+          },
+        ],
       },
       {
         path: "/faculty/assignment",
@@ -57,6 +78,10 @@ const router = createBrowserRouter([
     path: "/student",
     element: <Student />,
     children: [
+      {
+        path: "/student/",
+        element: <Navigate to="/student/dashboard/" replace />,
+      },
       {
         path: "/student/dashboard",
         element: <StudentDashboard />,

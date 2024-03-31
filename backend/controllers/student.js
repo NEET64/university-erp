@@ -1,6 +1,6 @@
 const Student = require("../models/student");
 
-module.exports.allStudents = async (req, res) => {
+module.exports.getStudents = async (req, res) => {
   let classId = req.query.id || "";
   let students = await Student.find({}).populate("class");
   if (classId) students = await Student.find({ class: classId });

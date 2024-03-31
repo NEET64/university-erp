@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { RecoilRoot } from "recoil";
 import { Outlet } from "react-router-dom";
+import { Toaster } from "@/components/ui/toaster";
 
 export const Faculty = () => {
   return (
@@ -33,6 +34,8 @@ export const Faculty = () => {
           <Outlet />
         </div>
       </div>
+
+      <Toaster />
     </RecoilRoot>
   );
 };
