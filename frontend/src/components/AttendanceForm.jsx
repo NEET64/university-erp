@@ -69,7 +69,7 @@ export const AttendanceForm = () => {
   });
 
   const onSubmit = (values) => {
-    values.faculty = "65c5e6db85c4191c88d6e2ce";
+    values.faculty = "65e9f70d642440f8ab0026f5";
     axios
       .post("http://localhost:8000/attendance", values)
       .then((response) => {
@@ -81,7 +81,8 @@ export const AttendanceForm = () => {
             <ToastDescription
               dangerouslySetInnerHTML={{
                 __html: formattedValues,
-              }}></ToastDescription>
+              }}
+            ></ToastDescription>
           ),
         });
         navigate("/faculty/attendance/view", { replace: true });
@@ -168,7 +169,8 @@ export const AttendanceForm = () => {
                 <FormLabel>Course</FormLabel>
                 <Select
                   onValueChange={field.onChange}
-                  defaultValue={field.value}>
+                  defaultValue={field.value}
+                >
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a Course" />
@@ -198,7 +200,8 @@ export const AttendanceForm = () => {
                     setClassId(event); // Assuming setClassId updates state
                     field.onChange(event); // Call field.onChange if necessary
                   }}
-                  defaultValue={field.value}>
+                  defaultValue={field.value}
+                >
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a Class" />
@@ -225,7 +228,8 @@ export const AttendanceForm = () => {
                 <FormLabel>Lectures</FormLabel>
                 <Select
                   onValueChange={field.onChange}
-                  defaultValue={field.value}>
+                  defaultValue={field.value}
+                >
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a Lecture" />
@@ -274,7 +278,8 @@ export const AttendanceForm = () => {
                         className={cn(
                           "pl-3 text-left font-normal",
                           !field.value && "text-muted-foreground"
-                        )}>
+                        )}
+                      >
                         {field.value ? (
                           format(field.value, "PPP")
                         ) : (
@@ -319,7 +324,8 @@ export const AttendanceForm = () => {
                         return (
                           <FormItem
                             key={student._id}
-                            className="flex flex-row items-center space-x-3 space-y-0">
+                            className="flex flex-row items-center space-x-3 space-y-0"
+                          >
                             <FormControl>
                               <Checkbox
                                 checked={field.value?.includes(student._id)}
@@ -368,7 +374,8 @@ export const AttendanceForm = () => {
                 onClick={() => {
                   const values = form.getValues();
                   onSubmit(values);
-                }}>
+                }}
+              >
                 Confirm
               </AlertDialogAction>
             </AlertDialogFooter>

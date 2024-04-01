@@ -4,6 +4,7 @@ const assignmentSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
+    maxLength: 35,
   },
   aim: {
     type: String,

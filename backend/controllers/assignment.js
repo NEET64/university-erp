@@ -27,7 +27,7 @@ module.exports.createAssignment = async (req, res) => {
     const newAssignment = await assignmentDoc.save();
 
     res.json({
-      message: "Assignment created successfully",
+      message: `${newAssignment.aim} added`,
       assignment: newAssignment,
     });
   } catch (error) {
@@ -60,6 +60,20 @@ module.exports.courseAllAssignment = async (req, res) => {
   });
 
   res.status(201).json(courseAssignment);
+};
+
+// get assignments for each faculty
+module.exports.facultyAllAssignment = async (req, res) => {
+  console.log(req.params);
+
+  const facultyAssignments = await Assignment.find({
+    faculty: req.params.facultyid,
+  })
+    .populate("course", "name code")
+    .populate("faculty", "name courses")
+    .populate("class", "name branch semester");
+
+  res.status(200).json(facultyAssignments);
 };
 
 // delete assignment

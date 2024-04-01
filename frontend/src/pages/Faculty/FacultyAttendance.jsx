@@ -17,7 +17,7 @@ export const FacultyAttendanceCalender = () => {
   const [facultyAttendance, setFacultyAttendance] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/attendance/faculty/65c5e6db85c4191c88d6e2ce")
+      .get("http://localhost:8000/attendance/faculty/65e9f70d642440f8ab0026f5")
       .then((response) => {
         setFacultyAttendance(response.data.attendance);
       });

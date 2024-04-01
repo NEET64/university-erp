@@ -38,3 +38,12 @@ module.exports.deleteClass = async (req, res) => {
     message: `${_class.name} deleted`,
   });
 };
+
+// get all classes where faculty id is {req.params}
+module.exports.facultyClasses = async (req, res) => {
+  let { id } = req.params;
+
+  let classes = await Class.find({ "faculties.faculty": id }).select("name");
+
+  res.json(classes);
+};

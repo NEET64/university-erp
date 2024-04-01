@@ -8,6 +8,7 @@ const {
   classAllAssignment,
   courseAllAssignment,
   deleteAssignment,
+  facultyAllAssignment,
 } = require("../controllers/assignment");
 
 router
@@ -15,9 +16,10 @@ router
   .post(wrapAsync(createAssignment))
   .get(wrapAsync(allAssignment));
 
-router.route("/:classid").get(wrapAsync(classAllAssignment));
-router.route("/:classid/:courseid").get(wrapAsync(courseAllAssignment));
+// router.route("/class/:classid").get(wrapAsync(classAllAssignment));
+// router.route("/:classid/:courseid").get(wrapAsync(courseAllAssignment));
+router.route("/faculty/:facultyid").get(wrapAsync(facultyAllAssignment));
 
-router.route("/:assignmentid").delete(wrapAsync(deleteAssignment));
+// router.route("/:assignmentid").delete(wrapAsync(deleteAssignment));
 
 module.exports = router;

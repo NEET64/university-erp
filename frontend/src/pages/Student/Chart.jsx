@@ -7,7 +7,7 @@ export const Chart = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/attendance/chart/65c657dbaf0982c4aebeedc1")
+      .get("http://localhost:8000/attendance/chart/65e9fb37642440f8ab0026fc")
       .then((response) => {
         setData(response.data.data);
       })
