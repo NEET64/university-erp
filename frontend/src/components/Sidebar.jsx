@@ -1,7 +1,6 @@
 import { ChevronLeft, LogOut, Menu } from "lucide-react";
 import { atom, useRecoilState, useRecoilValue } from "recoil";
 import { NavLink } from "react-router-dom";
-git;
 import { useMediaQuery } from "react-responsive";
 import { useEffect } from "react";
 
@@ -24,7 +23,8 @@ export default function Sidebar({ children }) {
     <aside className="h-screen p-2 sticky top-0 z-50">
       <nav
         className="h-full flex flex-col
-        bg-white rounded-lg shadow-2xl">
+        bg-white rounded-lg shadow-2xl"
+      >
         <div className="p-4 flex justify-between items-center h-16 border-b">
           <img
             src="https://img.logoipsum.com/218.svg"
@@ -35,7 +35,8 @@ export default function Sidebar({ children }) {
           />
           <button
             onClick={() => setExpanded((curr) => !curr)}
-            className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100">
+            className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"
+          >
             {expanded ? <ChevronLeft /> : <Menu />}
           </button>
         </div>
@@ -66,12 +67,14 @@ export function SidebarItem({ icon, text, alert }) {
           isActive
             ? " bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group"
             : "hover:bg-indigo-50 text-gray-600 relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group"
-        }>
+        }
+      >
         {icon}
         <span
           className={`overflow-hidden transition-all ${
             expanded ? " w-48 ml-3" : "w-0"
-          }`}>
+          }`}
+        >
           {text}
         </span>
         {alert && (
@@ -89,7 +92,8 @@ export function SidebarItem({ icon, text, alert }) {
             bg-indigo-100 text-indigo-800 text-sm
             invisible opacity-20 -translate-x-3 transition-all
             group-hover:visible group-hover:opacity-100 group-hover:translate-x-0 z-10
-          `}>
+          `}
+          >
             {text}
           </div>
         )}

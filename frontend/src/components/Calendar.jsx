@@ -143,7 +143,8 @@ const StudentAttendanceEntry = ({ event }) => {
         <div
           className={`text-sm ${
             event.status === "present" ? "text-green-500" : "text-red-500"
-          }`}>
+          }`}
+        >
           Status: {event.status}
         </div>
         <HoverCardArrow style={{ fill: "white" }} />

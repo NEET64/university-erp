@@ -20,6 +20,7 @@ import { StudentAttendance } from "./pages/Student/StudentAttendance";
 import { Assignment } from "./pages/Faculty/Assignment";
 import { StudentAssignment } from "./pages/Student/StudentAssignment";
 import { AttendanceForm } from "./components/AttendanceForm";
+import { Course } from "./pages/Admin/Course";
 
 const router = createBrowserRouter([
   {
@@ -68,7 +69,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/course",
-        element: <Header title="Dashboard" />,
+        element: <Course title="Course" />,
       },
       {
         path: "/admin/:anything",
