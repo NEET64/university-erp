@@ -10,11 +10,11 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 export const Header = ({ title }) => {
   return (
     // <div className="col-span-8 bg-white rounded-lg my-2 flex items-center pl-6 pr-4 py-2 justify-between">
-    <div className="rounded-lg flex items-center justify-between w-full">
+    <div className="pl-12 sm:pl-0 rounded-lg flex items-center justify-between w-full min-w-[515px]">
       <h1 className="text-4xl text-white font-sans">{title}</h1>
 
       <div className=" flex gap-1 items-center">
-        <form method="post" action="" className="max-w-md mx-auto">
+        {/* <form method="post" action="" className="max-w-md mx-auto">
           <div className="relative">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3">
               <svg
@@ -39,7 +39,7 @@ export const Header = ({ title }) => {
               placeholder="Search..."
             />
           </div>
-        </form>
+        </form> */}
 
         <Icon icon={<MessageSquareText size={20} />} />
         <Icon icon={<Bell size={20} />} />

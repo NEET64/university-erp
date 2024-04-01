@@ -20,12 +20,27 @@ export default function Sidebar({ children }) {
   }, [isMedium, setExpanded]);
 
   return (
-    <aside className="h-screen p-2 sticky top-0 z-50">
+    <aside
+      className={
+        expanded
+          ? "h-screen py-2 pl-2 absolute sm:sticky top-0 z-50"
+          : "h-16 bg-opacity-0 sm:flex sm:py-2 sm:pl-2 sm:h-screen absolute sm:sticky top-0 z-50"
+      }
+    >
       <nav
-        className="h-full flex flex-col
-        bg-white rounded-lg shadow-2xl"
+        className={
+          expanded
+            ? "h-full flex flex-col bg-white rounded-lg shadow-2xl"
+            : "flex flex-col sm:bg-white rounded-lg shadow-2xl"
+        }
       >
-        <div className="p-4 flex justify-between items-center h-16 border-b">
+        <div
+          className={
+            expanded
+              ? "p-4 flex justify-between items-center h-16 border-b"
+              : "pl-2 sm:p-4 flex justify-start items-center h-16"
+          }
+        >
           <img
             src="https://img.logoipsum.com/218.svg"
             className={`overflow-hidden transition-all ${
@@ -41,9 +56,21 @@ export default function Sidebar({ children }) {
           </button>
         </div>
 
-        <ul className="flex-1 px-3 py-2">{children}</ul>
+        <ul
+          className={
+            expanded ? "flex-1 px-3 py-2 " : "hidden sm:block px-3 py-2 flex-1"
+          }
+        >
+          {children}
+        </ul>
 
-        <ul className="px-3 py-2 border-t">
+        <ul
+          className={
+            expanded
+              ? "px-3 py-2 border-t"
+              : "hidden sm:block px-3 py-2 border-t"
+          }
+        >
           <SidebarItem
             icon={<LogOut size={20} />}
             text={"Logout"}
@@ -97,17 +124,6 @@ export function SidebarItem({ icon, text, alert }) {
             {text}
           </div>
         )}
-        {/* 
-        {!expanded && (
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>{text}</TooltipTrigger>
-              <TooltipContent>
-                <p>Add to library</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        )} */}
       </NavLink>
     </li>
   );
