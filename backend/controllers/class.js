@@ -43,7 +43,9 @@ module.exports.deleteClass = async (req, res) => {
 module.exports.facultyClasses = async (req, res) => {
   let { id } = req.params;
 
-  let classes = await Class.find({ "faculties.faculty": id }).select("name");
+  let classes = await Class.find({ "courseTeaching.facultyId": id }).select(
+    "name"
+  );
 
   res.json(classes);
 };

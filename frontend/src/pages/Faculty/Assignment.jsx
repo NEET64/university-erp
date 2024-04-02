@@ -33,7 +33,7 @@ export const Assignment = () => {
   const [assignments, setAssignments] = useState([]);
   const [course, setCourse] = useState([]);
   const [students, setStudents] = useState([]);
-  const [faculty, setFaculty] = useState("65e9f8d1642440f8ab0026f7");
+  const [faculty, setFaculty] = useState("660c6c7cb74446ead4053ecc");
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -47,11 +47,9 @@ export const Assignment = () => {
 
   useEffect(() => {
     // get courses for curr faculty
-    axios
-      .get("http://localhost:8000/faculty/" + "65e9f70d642440f8ab0026f5")
-      .then((response) => {
-        setCourse(response.data);
-      });
+    axios.get("http://localhost:8000/faculty/" + faculty).then((response) => {
+      setCourse(response.data);
+    });
   }, []);
 
   return (

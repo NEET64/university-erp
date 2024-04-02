@@ -51,13 +51,13 @@ export const AssignmentForm = () => {
       aim: "",
       class: "",
       course: "",
-      faculty: "65e9f8d1642440f8ab0026f7",
+      faculty: "660c6c7cb74446ead4053ecc",
     },
   });
 
   const [course, setCourse] = useState([]);
   const [classes, setClasses] = useState([]);
-  const [faculty, setFaculty] = useState("65e9f8d1642440f8ab0026f7");
+  const [faculty, setFaculty] = useState("660c6c7cb74446ead4053ecc");
   const { toast } = useToast();
 
   const onSubmit = (values) => {

@@ -19,12 +19,6 @@ const deleteCourse = (AssignmentId) => {
     .delete(`http://localhost:8000/assignment/${AssignmentId}`)
     .then((response) => {
       window.location.reload();
-      console.log(response.data);
-      // toast({
-      //   title: response.data.title,
-      //   description: response.data.aim,
-      //   action: <ToastAction>{window.location.reload}</ToastAction>,
-      // });
     })
     .catch((error) => {
       console.error("Error deleting assignment:", error);
@@ -42,20 +36,6 @@ export const AssignmentColumns = [
       return (
         <div className="flex space-x-2">
           <span className="truncate ">{row.getValue("title")}</span>
-        </div>
-      );
-    },
-  },
-  {
-    accessorKey: "faculty",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="faculty" />
-    ),
-    cell: ({ row }) => {
-      const facultyName = row.getValue("faculty")?.name;
-      return (
-        <div className="flex space-x-2">
-          <span className="truncate ">{facultyName}</span>
         </div>
       );
     },
