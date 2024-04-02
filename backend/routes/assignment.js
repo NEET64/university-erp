@@ -20,6 +20,6 @@ router
 // router.route("/:classid/:courseid").get(wrapAsync(courseAllAssignment));
 router.route("/faculty/:facultyid").get(wrapAsync(facultyAllAssignment));
 
-// router.route("/:assignmentid").delete(wrapAsync(deleteAssignment));
+router.route("/:assignmentid").delete(wrapAsync(deleteAssignment));
 
 module.exports = router;

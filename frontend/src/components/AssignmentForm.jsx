@@ -64,11 +64,13 @@ export const AssignmentForm = () => {
     axios
       .post("http://localhost:8000/assignment", values)
       .then((response) => {
-        console.log(response.data);
-        window.location.reload();
         toast({
           title: response.data.message,
         });
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       })
       .catch((err) => {
         toast({

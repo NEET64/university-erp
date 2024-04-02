@@ -78,7 +78,7 @@ module.exports.facultyAllAssignment = async (req, res) => {
 
 // delete assignment
 module.exports.deleteAssignment = async (req, res) => {
-  const deletedassignment = await Assignment.deleteOne({
+  const deletedassignment = await Assignment.findOneAndDelete({
     _id: req.params.assignmentid,
   });
 
