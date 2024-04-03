@@ -6,7 +6,9 @@ const {
   editClass,
   deleteClass,
   facultyClasses,
+  getClass,
 } = require("../controllers/class");
+const { wrap } = require("module");
 const router = express.Router();
 
 router.route("/").get(wrapAsync(allClasses)).post(wrapAsync(createClass));

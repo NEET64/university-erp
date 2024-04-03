@@ -43,23 +43,17 @@ module.exports.allAssignment = async (req, res) => {
   res.status(200).json(assignments);
 };
 
-// All assignments for each student
-module.exports.classAllAssignment = async (req, res) => {
-  let id = req.params.classid;
+//find assignments for student
+module.exports.courseAssignment = async (req, res) => {
+  const studentId = req.body.studentId;
+  const courseId = req.body.courseId;
 
-  const classAssignment = await Assignment.find({ class: id });
-  res.status(201).json(classAssignment);
-};
+  const assignments = await Assignment.find({
+    "students.student": studentId,
+    course: courseId,
+  }).populate("class faculty students.student course");
 
-// All assignments for each teacher
-module.exports.courseAllAssignment = async (req, res) => {
-  console.log(req.params);
-  const courseAssignment = await Assignment.find({
-    class: req.params.classid,
-    course: req.params.courseid,
-  });
-
-  res.status(201).json(courseAssignment);
+  res.json(assignments);
 };
 
 // get assignments for each faculty

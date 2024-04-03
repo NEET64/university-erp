@@ -5,10 +5,9 @@ const wrapAsync = require("../utils/wrapAsync");
 const {
   createAssignment,
   allAssignment,
-  classAllAssignment,
-  courseAllAssignment,
   deleteAssignment,
   facultyAllAssignment,
+  courseAssignment,
 } = require("../controllers/assignment");
 
 router
@@ -16,9 +15,9 @@ router
   .post(wrapAsync(createAssignment))
   .get(wrapAsync(allAssignment));
 
-// router.route("/class/:classid").get(wrapAsync(classAllAssignment));
-// router.route("/:classid/:courseid").get(wrapAsync(courseAllAssignment));
 router.route("/faculty/:facultyid").get(wrapAsync(facultyAllAssignment));
+
+router.route("/courseAssignments").post(wrapAsync(courseAssignment));
 
 router.route("/:assignmentid").delete(wrapAsync(deleteAssignment));
 

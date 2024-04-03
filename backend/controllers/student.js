@@ -40,3 +40,36 @@ module.exports.deleteStudent = async (req, res) => {
     message: `${student.name} deleted`,
   });
 };
+
+module.exports.getStudentById = async (req, res) => {
+  console.log("hello");
+  let { id } = req.params;
+  try {
+    let student = await Student.findById(id).populate({
+      path: "class",
+      populate: {
+        path: "courseTeaching",
+        populate: [
+          {
+            path: "courseId",
+            select: "name code credit _id",
+          },
+          { path: "facultyId", select: "name" },
+        ],
+      },
+    });
+
+    console.log(student);
+
+    if (!student) {
+      return res.status(404).json({ error: "Student not found" });
+    }
+
+    res.json({
+      student,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};

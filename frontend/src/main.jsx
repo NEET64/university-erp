@@ -18,9 +18,10 @@ import { StudentDashboard } from "./pages/Student/Dashboard";
 
 import { StudentAttendance } from "./pages/Student/StudentAttendance";
 import { Assignment } from "./pages/Faculty/Assignment";
-import { StudentAssignment } from "./pages/Student/StudentAssignment";
+import StudentAssignment from "./pages/Student/StudentAssignment";
 import { AttendanceForm } from "./components/AttendanceForm";
 import { Course } from "./pages/Admin/Course";
+import AssignmentCourse from "./pages/Student/AssignmentCourse";
 
 const router = createBrowserRouter([
   {
@@ -93,9 +94,14 @@ const router = createBrowserRouter([
         path: "/student/attendance",
         element: <StudentAttendance />,
       },
+
       {
         path: "/student/assignment",
         element: <StudentAssignment />,
+      },
+      {
+        path: "/student/assignment/test",
+        element: <AssignmentCourse />,
       },
       {
         path: "/student/fees",

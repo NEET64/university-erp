@@ -5,6 +5,7 @@ const {
   editStudent,
   deleteStudent,
   getStudents,
+  getStudentById,
 } = require("../controllers/student");
 const router = express.Router();
 
@@ -18,6 +19,7 @@ router.route("/").get(wrapAsync(getStudents)).post(wrapAsync(createStudent));
 
 router
   .route("/:id")
+  .get(wrapAsync(getStudentById))
   .put(wrapAsync(editStudent))
   .delete(wrapAsync(deleteStudent));
 
