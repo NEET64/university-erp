@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/card";
 
 const StudentAssignment = () => {
-  const StudentID = "65e9fb37642440f8ab0026fc";
+  const StudentID = "65c657dbaf0982c4aebeedc1";
 
   const [student, setStundent] = useState();
 
@@ -72,14 +72,12 @@ const StudentAssignment = () => {
                   <Button
                     asChild
                     variant="outline"
-                    className="hover:bg-gradient-to-tr from-indigo-200 to-indigo-100 hover:text-indigo-800 "
-                  >
+                    className="hover:bg-gradient-to-tr from-indigo-200 to-indigo-100 hover:text-indigo-800 ">
                     <Link
                       to={
                         "/student/assignment/test?" + `${course.courseId._id}`
                       }
-                      className="hover:bg-indigo-50"
-                    >
+                      className="hover:bg-indigo-50">
                       view Assignment
                     </Link>
                   </Button>

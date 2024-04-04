@@ -18,7 +18,7 @@ export const StudentDashboard = () => {
           4
         </div>
         <div className="bg-white rounded-md col-span-4 row-span-2 row-start-3 sm:col-span-5 sm:row-span-4 sm:row-start-2 md:col-start-1">
-          <Chart />
+          {/* <Chart /> */}
         </div>
         <div className="bg-white rounded-md col-span-4 row-span-2 row-start-5 sm:col-span-3 sm:row-span-4 sm:col-start-6 sm:row-start-2 md:col-start-6">
           6

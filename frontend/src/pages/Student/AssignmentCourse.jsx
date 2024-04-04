@@ -6,8 +6,8 @@ import axios from "axios";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Assignment } from "../Faculty/Assignment";
-import { CourseAssignmentDataTable } from "./courseAssignmentDataTable";
-import { CourseAssignmentColumns } from "./courseAssignmentColumns";
+import { CourseAssignmentDataTable } from "./CourseAssignmentDataTable";
+import { CourseAssignmentColumns } from "./CourseAssignmentColumns";
 import { Separator } from "@/components/ui/separator";
 
 const AssignmentCourse = () => {

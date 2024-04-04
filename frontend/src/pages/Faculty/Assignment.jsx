@@ -33,7 +33,7 @@ export const Assignment = () => {
   const [assignments, setAssignments] = useState([]);
   const [course, setCourse] = useState([]);
   const [students, setStudents] = useState([]);
-  const [faculty, setFaculty] = useState("660c6c7cb74446ead4053ecc");
+  const [faculty, setFaculty] = useState("65c5e6db85c4191c88d6e2ce");
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -58,8 +58,7 @@ export const Assignment = () => {
       <AssignmentForm></AssignmentForm>
       <AssignmentDataTable
         columns={AssignmentColumns}
-        data={assignments}
-      ></AssignmentDataTable>
+        data={assignments}></AssignmentDataTable>
     </div>
   );
 };
