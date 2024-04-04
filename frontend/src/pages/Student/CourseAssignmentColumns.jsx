@@ -100,6 +100,14 @@ export const CourseAssignmentColumns = [
     id: "actions",
     cell: ({ row }) => {
       const { toast } = useToast();
+      console.log(row.original.aim);
+      console.log(row.original.title);
+      console.log(row.original.course.name);
+      console.log(row.original.course.code);
+
+      const dueDate = new Date(row.original.dueOn).toLocaleDateString();
+      const postDate = new Date(row.original.postedOn).toLocaleDateString();
+
       return (
         <div className="flex gap-2">
           <AlertDialog>
@@ -109,20 +117,25 @@ export const CourseAssignmentColumns = [
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogTitle>
+                  {row.original.faculty.name} has posted new Assignment
+                </AlertDialogTitle>
                 <AlertDialogDescription>
-                  view the entire assignment here
+                  {row.original.title}
                 </AlertDialogDescription>
               </AlertDialogHeader>
+
+              <p className="mt-3 ">Aim : {row.original.aim}</p>
+              <p className="mt-1 ">Course : {row.original.course.name}</p>
+              <p className="mt-1 ">Course code : {row.original.course.code}</p>
+
+              <div className="flex justify-between mb-2 mt-1">
+                <p className="my-1">Post : {postDate} </p>
+                <p className="my-1">Due : {dueDate}</p>
+              </div>
+
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction
-                  onClick={() => {
-                    console.log("view here");
-                  }}
-                >
-                  Continue
-                </AlertDialogAction>
+                <AlertDialogCancel>Close</AlertDialogCancel>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
