@@ -9,7 +9,6 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 
 export const Header = ({ title }) => {
   return (
-    // <div className="col-span-8 bg-white rounded-lg my-2 flex items-center pl-6 pr-4 py-2 justify-between">
     <div className="pl-12 sm:pl-0 rounded-lg flex items-center justify-between w-full min-w-[515px]">
       <h1 className="text-4xl text-white font-sans">{title}</h1>
 

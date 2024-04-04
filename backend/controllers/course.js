@@ -16,7 +16,7 @@ module.exports.createCourse = async (req, res) => {
   await course.save();
 
   res.json({
-    message: `${course.name} added`,
+    message: `${course.name} Added`,
   });
 };
 
@@ -27,7 +27,7 @@ module.exports.editCourse = async (req, res) => {
   let course = await Course.findByIdAndUpdate(id, body);
 
   res.json({
-    message: `${course.name} edited`,
+    message: `${course.name} Edited`,
   });
 };
 
@@ -37,6 +37,6 @@ module.exports.deleteCourse = async (req, res) => {
   let course = await Course.findByIdAndDelete(id);
 
   res.json({
-    message: `${course.name} deleted`,
+    message: `${course.name} Deleted`,
   });
 };

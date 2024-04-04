@@ -1,7 +1,21 @@
 import { Header } from "@/components/Header";
 import { Chart } from "./Chart";
+import { AttendanceMeta } from "@/components/AttendanceMeta";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Calendar } from "@/components/Calendar";
 
 export const StudentDashboard = () => {
+  const [attendance, setAttendance] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/attendance/65c657dbaf0982c4aebeedc1")
+      .then((response) => {
+        setAttendance(response.data.attendance);
+      });
+  }, []);
+
   return (
     <>
       <Header title="Dashboard" />
@@ -21,13 +35,13 @@ export const StudentDashboard = () => {
           <Chart />
         </div>
         <div className="bg-white rounded-md col-span-4 row-span-2 row-start-5 sm:col-span-3 sm:row-span-4 sm:col-start-6 sm:row-start-2 md:col-start-6">
-          6
+          <AttendanceMeta />
         </div>
         <div className="bg-white rounded-md col-span-4 row-span-2 row-start-7 sm:col-span-8 sm:row-start-6 md:row-span-3 md:col-start-1">
           7
         </div>
         <div className="bg-white rounded-md col-span-4 row-span-2 row-start-9 sm:row-span-5 sm:row-start-8 md:col-span-3 md:row-span-4 md:col-start-9 md:row-start-1">
-          8
+          <Calendar events={attendance} belongsTo="student" isSmall={true} />
         </div>
         <div
           className="bg-white rounded-md col-span-4 row-span-2 row-start-11 sm:row-span-5 sm:col-start-5 sm:row-start-8

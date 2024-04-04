@@ -15,9 +15,13 @@ import {
   FacultyAttendanceCalender,
 } from "./pages/Faculty/FacultyAttendance";
 import { StudentDashboard } from "./pages/Student/Dashboard";
-import { Course } from "./pages/Admin/Course";
+import { Courses } from "./pages/Admin/Courses";
 import { StudentAttendance } from "./pages/Student/StudentAttendance";
 import { AttendanceForm } from "./components/AttendanceForm";
+import { Students } from "./pages/Admin/Students";
+import { Faculties } from "./pages/Admin/Faculties";
+import { Classes } from "./pages/Admin/Classes";
+import { AdminDashboard } from "./pages/Admin/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -61,12 +65,28 @@ const router = createBrowserRouter([
     element: <Admin />,
     children: [
       {
-        path: "/admin/dashboard",
-        element: <Header title="Dashboard" />,
+        path: "/admin/",
+        element: <Navigate to="/admin/dashboard/" replace />,
       },
       {
-        path: "/admin/course",
-        element: <Course />,
+        path: "/admin/dashboard",
+        element: <AdminDashboard />,
+      },
+      {
+        path: "/admin/courses",
+        element: <Courses />,
+      },
+      {
+        path: "/admin/students",
+        element: <Students />,
+      },
+      {
+        path: "/admin/faculties",
+        element: <Faculties />,
+      },
+      {
+        path: "/admin/classes",
+        element: <Classes />,
       },
       {
         path: "/admin/:anything",

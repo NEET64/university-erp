@@ -48,7 +48,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export function DataTable({ columns, data }) {
+export function DataTable({ columns, data, children }) {
   const [sorting, setSorting] = useState([]);
   const [columnFilters, setColumnFilters] = useState([]);
   const [columnVisibility, setColumnVisibility] = useState({});
@@ -76,11 +76,11 @@ export function DataTable({ columns, data }) {
   });
 
   return (
-    <div className=" min-w-max max-w-7xl">
-      <DataTableToolbar table={table} />
+    <div className="min-w-max max-w-7xl mt-4">
+      <DataTableToolbar table={table}>{children}</DataTableToolbar>
 
-      <div className="mt-2">
-        <Table className="bg-white rounded-md">
+      <div>
+        <Table className="bg-white rounded-md overflow-hidden">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
@@ -198,46 +198,49 @@ export const DataTablePagination = ({ table }) => {
   );
 };
 
-export const DataTableToolbar = ({ table }) => {
+export const DataTableToolbar = ({ table, children }) => {
   return (
-    <div className="flex gap-2">
-      <div className="flex items-center">
+    <div className="flex justify-between my-2 gap-2">
+      <div className="flex items-center gap-2">
         <Input
-          placeholder="Search Course..."
+          placeholder="Search..."
           value={table.getColumn("name")?.getFilterValue() ?? ""}
           onChange={(event) =>
             table.getColumn("name")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" className="ml-auto flex">
+              <EyeOff className="mr-2 h-4 w-4" />
+              View
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            {table
+              .getAllColumns()
+              .filter((column) => column.getCanHide())
+              .map((column) => {
+                return (
+                  <DropdownMenuCheckboxItem
+                    key={column.id}
+                    className="capitalize"
+                    checked={column.getIsVisible()}
+                    onCheckedChange={(value) =>
+                      column.toggleVisibility(!!value)
+                    }>
+                    {column.id}
+                  </DropdownMenuCheckboxItem>
+                );
+              })}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
 
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline" className="ml-auto flex">
-            <EyeOff className="mr-2 h-4 w-4" />
-            View
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          {table
-            .getAllColumns()
-            .filter((column) => column.getCanHide())
-            .map((column) => {
-              return (
-                <DropdownMenuCheckboxItem
-                  key={column.id}
-                  className="capitalize"
-                  checked={column.getIsVisible()}
-                  onCheckedChange={(value) => column.toggleVisibility(!!value)}>
-                  {column.id}
-                </DropdownMenuCheckboxItem>
-              );
-            })}
-        </DropdownMenuContent>
-      </DropdownMenu>
+      {children}
     </div>
   );
 };

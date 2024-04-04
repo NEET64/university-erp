@@ -16,19 +16,19 @@ const classSchema = new mongoose.Schema({
     min: 1,
     max: 8,
   },
-  faculties: [
+  courseTeaching: [
     {
-      course: {
+      courseId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Course",
       },
-      faculty: {
+      facultyId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Faculty",
       },
     },
   ],
-  coordinator: {
+  coordinatorId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Faculty",
   },

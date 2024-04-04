@@ -1,7 +1,7 @@
 const Faculty = require("../models/faculty");
 
 module.exports.allFaculties = async (req, res) => {
-  let faculties = await Faculty.find({});
+  let faculties = await Faculty.find({}).populate("courses");
   res.json({
     faculties: faculties,
   });
@@ -14,7 +14,7 @@ module.exports.createFaculty = async (req, res) => {
   await faculty.save();
 
   res.json({
-    message: `${faculty.name} added`,
+    message: `${faculty.name} Added`,
   });
 };
 
@@ -25,7 +25,7 @@ module.exports.editFaculty = async (req, res) => {
   let faculty = await Faculty.findByIdAndUpdate(id, body);
 
   res.json({
-    message: `${faculty.name} edited`,
+    message: `${faculty.name} Edited`,
   });
 };
 
@@ -35,6 +35,6 @@ module.exports.deleteFaculty = async (req, res) => {
   let faculty = await Faculty.findByIdAndDelete(id);
 
   res.json({
-    message: `${faculty.name} deleted`,
+    message: `${faculty.name} Deleted`,
   });
 };
