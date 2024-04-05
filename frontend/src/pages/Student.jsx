@@ -27,7 +27,7 @@ export const Student = () => {
           <SidebarItem icon={<HelpCircle size={20} />} text={"Help"} />
         </Sidebar>
 
-        <div className="flex-1 my-2 mr-2 flex flex-col">
+        <div className="flex-1 my-2 px-2 flex flex-col">
           <Outlet />
         </div>
       </div>

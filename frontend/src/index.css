@@ -8,5 +8,7 @@
 }
 
 body {
-  background: linear-gradient(90deg, rgb(56, 189, 248), rgb(37, 99, 235));
+  background: rgba(37, 100, 235, 0.7);
+  background-repeat: no-repeat;
+  background-size: cover;
 }

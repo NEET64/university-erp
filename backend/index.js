@@ -19,6 +19,7 @@ const facultyRouter = require("./routes/faculty");
 const studentRouter = require("./routes/student");
 const classRouter = require("./routes/class");
 const attendanceRouter = require("./routes/attendence");
+const assignmentRouter = require("./routes/assignment");
 
 // connect to db
 let main = async () => {
@@ -42,6 +43,30 @@ app.use("/class", classRouter);
 app.use("/attendance", attendanceRouter);
 app.use("/admin", adminRouter);
 app.use("/student", studentRouter);
+app.use("/assignment", assignmentRouter);
+
+app.get("/branch", (req, res) => {
+  res.json({
+    branches: [
+      "Computer Science and Engineering",
+      "Information Technology",
+      "Electrical Engineering",
+      "Computer Engineering",
+      "Mechanical Engineering",
+      "Civil Engineering",
+      "Chemical Engineering",
+      "Aerospace Engineering",
+      "Biomedical Engineering",
+      "Environmental Engineering",
+      "Industrial Engineering",
+      "Materials Engineering",
+      "Nuclear Engineering",
+      "Petroleum Engineering",
+      "Robotics Engineering",
+      "Biotechnology Engineering",
+    ],
+  });
+});
 
 // if request don't match any route
 app.get("*", (req, res) => {

@@ -1,10 +1,11 @@
 const express = require("express");
 const wrapAsync = require("../utils/wrapAsync");
 const {
-  allStudents,
   createStudent,
   editStudent,
   deleteStudent,
+  getStudents,
+  getStudentById,
 } = require("../controllers/student");
 const router = express.Router();
 
@@ -14,10 +15,11 @@ router.get("/dashboard", (req, res) => {
   });
 });
 
-router.route("/").get(wrapAsync(allStudents)).post(wrapAsync(createStudent));
+router.route("/").get(wrapAsync(getStudents)).post(wrapAsync(createStudent));
 
 router
   .route("/:id")
+  .get(wrapAsync(getStudentById))
   .put(wrapAsync(editStudent))
   .delete(wrapAsync(deleteStudent));
 

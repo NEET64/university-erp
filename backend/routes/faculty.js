@@ -5,6 +5,7 @@ const {
   createFaculty,
   editFaculty,
   deleteFaculty,
+  facultyCourses,
 } = require("../controllers/faculty");
 const router = express.Router();
 
@@ -19,6 +20,7 @@ router.route("/").get(wrapAsync(allFaculties)).post(wrapAsync(createFaculty));
 router
   .route("/:id")
   .put(wrapAsync(editFaculty))
-  .delete(wrapAsync(deleteFaculty));
+  .delete(wrapAsync(deleteFaculty))
+  .get(wrapAsync(facultyCourses));
 
 module.exports = router;

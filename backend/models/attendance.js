@@ -1,12 +1,10 @@
 const mongoose = require("mongoose");
 
 const attendanceSchema = new mongoose.Schema({
-  students: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Student",
-    },
-  ],
+  students: {
+    type: Map,
+    of: String,
+  },
   course: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Course",

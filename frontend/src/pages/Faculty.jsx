@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { RecoilRoot } from "recoil";
 import { Outlet } from "react-router-dom";
+import { Toaster } from "@/components/ui/toaster";
 
 export const Faculty = () => {
   return (
@@ -29,10 +30,12 @@ export const Faculty = () => {
           <SidebarItem icon={<HelpCircle size={20} />} text={"Help"} />
         </Sidebar>
 
-        <div className="flex-1 my-2 mr-2">
+        <div className=" h-full flex-1 my-2 mx-2">
           <Outlet />
         </div>
       </div>
+
+      <Toaster />
     </RecoilRoot>
   );
 };
