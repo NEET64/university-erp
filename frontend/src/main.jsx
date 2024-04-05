@@ -22,6 +22,7 @@ import { Students } from "./pages/Admin/Students";
 import { Faculties } from "./pages/Admin/Faculties";
 import { Classes } from "./pages/Admin/Classes";
 import { AdminDashboard } from "./pages/Admin/Dashboard";
+import NotFoundPage from "./pages/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -123,6 +124,10 @@ const router = createBrowserRouter([
         element: <Header title="Feature Coming Soon" />,
       },
     ],
+  },
+  {
+    path: "/*",
+    element: <NotFoundPage />,
   },
 ]);
 

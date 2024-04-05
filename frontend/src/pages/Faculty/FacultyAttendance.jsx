@@ -3,6 +3,8 @@ import { Link, Outlet } from "react-router-dom";
 import { Calendar } from "@/components/Calendar";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
 
 export const FacultyAttendance = () => {
   return (
@@ -25,7 +27,12 @@ export const FacultyAttendanceCalender = () => {
 
   return (
     <>
-      <Link to="/faculty/attendance/post">Post Attendance</Link>
+      <Button asChild variant="outline" className="flex p-2 w-48">
+        <Link to="/faculty/attendance/post">
+          Post Attendance
+          <Plus className="block p-1 rounded-md ml-2 -mb-0.5 bg-slate-200" />
+        </Link>
+      </Button>
       <Calendar events={facultyAttendance} belongsTo={"faculty"} />
     </>
   );

@@ -15,7 +15,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { HoverCardArrow } from "@radix-ui/react-hover-card";
 import { NavLink } from "react-router-dom";
@@ -109,7 +109,7 @@ export const Calendar = ({ events, belongsTo, isSmall }) => {
             const dateKey = format(day, "yyyy-MM-dd");
             const todaysEvent = eventsByDate[dateKey] || [];
             return (
-              <>
+              <Fragment key={format(day, "yyyy-MM-dd")}>
                 {!isSmall ? (
                   <DayWithEvents
                     day={day}
@@ -125,7 +125,7 @@ export const Calendar = ({ events, belongsTo, isSmall }) => {
                     belongsTo={belongsTo}
                   />
                 )}
-              </>
+              </Fragment>
             );
           })}
         </div>
