@@ -6,16 +6,19 @@ import axios from "axios";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Assignment } from "../Faculty/Assignment";
-import { CourseAssignmentDataTable } from "./CourseAssignmentDataTable";
 import { CourseAssignmentColumns } from "./CourseAssignmentColumns";
 import { Separator } from "@/components/ui/separator";
+import { DataTable } from "@/components/DataTable";
 
 const AssignmentCourse = () => {
   const location = useLocation();
 
   //get student id from localstorage
-  const studentId = "65e9fb37642440f8ab0026fc";
-  const courseId = location.search.substring(1);
+  const studentId = "65c657dbaf0982c4aebeedc1";
+  const urlParams = new URLSearchParams(window.location.search);
+  const courseId = urlParams.get("courseId");
+  const courseName = urlParams.get("courseName");
+  const facultyName = urlParams.get("facultyName");
 
   const [assignments, setAssignments] = useState([]);
 
@@ -27,38 +30,37 @@ const AssignmentCourse = () => {
       })
       .then(function (response) {
         setAssignments(response.data);
-        // console.log(response.data);
       })
       .catch(function (error) {
         console.log(error);
       });
   }, []);
 
-  if (assignments.length > 0) {
-    console.log(assignments[0].course.name);
-  }
+  // if (assignments.length > 0) {
+  //   console.log(assignments[0].course.name);
+  // }
 
   return (
     <>
       <Header />
       <Card className="mx-80">
-        {assignments[0] && (
+        {
           <CardContent className="grid grid-cols-1 mt-4  gap-4 md:grid-cols-2 md:gap-0">
             <div className="flex flex-col items-center">
               <p className="text-slate-800 font-bold ">Course</p>
-              <p className="text-slate-500">{assignments[0].course.name}</p>
+              <p className="text-slate-500">{courseName}</p>
             </div>
             <div className="flex flex-col items-center">
               <p className="text-slate-800 font-bold ">Faculty</p>
-              <p className="text-slate-500">{assignments[0].faculty.name}</p>
+              <p className="text-slate-500">{facultyName}</p>
             </div>
           </CardContent>
-        )}
+        }
       </Card>
-      <CourseAssignmentDataTable
+      <DataTable
         columns={CourseAssignmentColumns}
         data={assignments}
-      />
+        searchBy={"course"}></DataTable>
     </>
   );
 };

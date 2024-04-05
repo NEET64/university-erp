@@ -69,15 +69,11 @@ const StudentAssignment = () => {
                     <p className="text-slate-500">{course.courseId.credit}</p>
                   </div>
 
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="hover:bg-gradient-to-tr from-indigo-200 to-indigo-100 hover:text-indigo-800 ">
+                  <Button variant="outline" className="p-0">
+                    {/* {console.log(course.courseId.name)} */}
                     <Link
-                      to={
-                        "/student/assignment/test?" + `${course.courseId._id}`
-                      }
-                      className="hover:bg-indigo-50">
+                      to={`/student/assignment/test?courseId=${course.courseId._id}&courseName=${course.courseId.name}&facultyName=${course.facultyId.name}`}
+                      className="hover:bg-indigo-50 w-full h-full p-2">
                       view Assignment
                     </Link>
                   </Button>

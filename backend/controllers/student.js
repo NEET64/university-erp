@@ -16,7 +16,7 @@ module.exports.createStudent = async (req, res) => {
   await student.save();
 
   res.json({
-    message: `${student.name} added`,
+    message: `${student.name} Added`,
   });
 };
 
@@ -27,7 +27,7 @@ module.exports.editStudent = async (req, res) => {
   let student = await Student.findByIdAndUpdate(id, body);
 
   res.json({
-    message: `${student.name} edited`,
+    message: `${student.name} Edited`,
   });
 };
 
@@ -37,7 +37,7 @@ module.exports.deleteStudent = async (req, res) => {
   let student = await Student.findByIdAndDelete(id);
 
   res.json({
-    message: `${student.name} deleted`,
+    message: `${student.name} Deleted`,
   });
 };
 

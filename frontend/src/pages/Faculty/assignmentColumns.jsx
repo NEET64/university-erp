@@ -1,4 +1,4 @@
-import { DataTableColumnHeader } from "./AssignmentDataTable";
+// import { DataTableColumnHeader } from "./AssignmentDataTable";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,6 +13,7 @@ import {
 import axios from "axios";
 import { Trash2 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { DataTableColumnHeader } from "@/components/DataTable";
 
 const deleteCourse = (AssignmentId) => {
   axios
@@ -111,8 +112,7 @@ export const AssignmentColumns = [
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
                 <AlertDialogAction
-                  onClick={() => deleteCourse(row.original._id)}
-                >
+                  onClick={() => deleteCourse(row.original._id)}>
                   Continue
                 </AlertDialogAction>
               </AlertDialogFooter>

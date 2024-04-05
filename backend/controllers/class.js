@@ -1,7 +1,10 @@
 const Class = require("../models/class");
 
 module.exports.allClasses = async (req, res) => {
-  let classes = await Class.find({});
+  let classes = await Class.find({})
+    .populate("courseTeaching.courseId")
+    .populate("courseTeaching.facultyId")
+    .populate("coordinatorId");
   res.json({
     classes: classes,
   });
@@ -14,7 +17,7 @@ module.exports.createClass = async (req, res) => {
   await _class.save();
 
   res.json({
-    message: `${_class.name} added`,
+    message: `${_class.name} Added`,
   });
 };
 
@@ -25,7 +28,7 @@ module.exports.editClass = async (req, res) => {
   let _class = await Class.findByIdAndUpdate(id, body);
 
   res.json({
-    message: `${_class.name} edited`,
+    message: `${_class.name} Edited`,
   });
 };
 
@@ -35,7 +38,7 @@ module.exports.deleteClass = async (req, res) => {
   let _class = await Class.findByIdAndDelete(id);
 
   res.json({
-    message: `${_class.name} deleted`,
+    message: `${_class.name} Deleted`,
   });
 };
 

@@ -25,9 +25,10 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
-import { AssignmentDataTable } from "./AssignmentDataTable";
+// import { AssignmentDataTable } from "./AssignmentDataTable";
 import { AssignmentColumns } from "./assignmentColumns";
 import { AssignmentForm } from "@/components/AssignmentForm";
+import { DataTable } from "@/components/DataTable";
 
 export const Assignment = () => {
   const [assignments, setAssignments] = useState([]);
@@ -55,10 +56,9 @@ export const Assignment = () => {
   return (
     <div>
       <Header title="Assignment" />
-      <AssignmentForm></AssignmentForm>
-      <AssignmentDataTable
-        columns={AssignmentColumns}
-        data={assignments}></AssignmentDataTable>
+      <DataTable columns={AssignmentColumns} data={assignments}>
+        <AssignmentForm />
+      </DataTable>
     </div>
   );
 };

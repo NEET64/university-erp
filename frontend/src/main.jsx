@@ -15,13 +15,23 @@ import {
   FacultyAttendanceCalender,
 } from "./pages/Faculty/FacultyAttendance";
 import { StudentDashboard } from "./pages/Student/Dashboard";
-
-import { StudentAttendance } from "./pages/Student/StudentAttendance";
-import { Assignment } from "./pages/Faculty/Assignment";
-import StudentAssignment from "./pages/Student/StudentAssignment";
 import { AttendanceForm } from "./components/AttendanceForm";
-import { Course } from "./pages/Admin/Course";
+import { Assignment } from "./pages/Faculty/Assignment";
+import { AdminDashboard } from "./pages/Admin/Dashboard";
+import { Courses } from "./pages/Admin/Courses";
+import { Students } from "./pages/Admin/Students";
+import { Faculties } from "./pages/Admin/Faculties";
+import { Classes } from "./pages/Admin/Classes";
+import { StudentAttendance } from "./pages/Student/StudentAttendance";
+import StudentAssignment from "./pages/Student/StudentAssignment";
 import AssignmentCourse from "./pages/Student/AssignmentCourse";
+import NotFoundPage from "./pages/NotFound";
+// import { Courses } from "./pages/Admin/Courses";
+// import { StudentAttendance } from "./pages/Student/StudentAttendance";
+// import { Assignment } from "./pages/Faculty/Assignment";
+// import StudentAssignment from "./pages/Student/StudentAssignment";
+// import { AttendanceForm } from "./components/AttendanceForm";
+// import AssignmentCourse from "./pages/Student/AssignmentCourse";
 
 const router = createBrowserRouter([
   {
@@ -65,12 +75,28 @@ const router = createBrowserRouter([
     element: <Admin />,
     children: [
       {
-        path: "/admin/dashboard",
-        element: <Header title="Dashboard" />,
+        path: "/admin/",
+        element: <Navigate to="/admin/dashboard/" replace />,
       },
       {
-        path: "/admin/course",
-        element: <Course title="Course" />,
+        path: "/admin/dashboard",
+        element: <AdminDashboard />,
+      },
+      {
+        path: "/admin/courses",
+        element: <Courses />,
+      },
+      {
+        path: "/admin/students",
+        element: <Students />,
+      },
+      {
+        path: "/admin/faculties",
+        element: <Faculties />,
+      },
+      {
+        path: "/admin/classes",
+        element: <Classes />,
       },
       {
         path: "/admin/:anything",
@@ -112,6 +138,10 @@ const router = createBrowserRouter([
         element: <Header title="Feature Coming Soon" />,
       },
     ],
+  },
+  {
+    path: "/*",
+    element: <NotFoundPage />,
   },
 ]);
 

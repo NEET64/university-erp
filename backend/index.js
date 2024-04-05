@@ -45,6 +45,29 @@ app.use("/admin", adminRouter);
 app.use("/student", studentRouter);
 app.use("/assignment", assignmentRouter);
 
+app.get("/branch", (req, res) => {
+  res.json({
+    branches: [
+      "Computer Science and Engineering",
+      "Information Technology",
+      "Electrical Engineering",
+      "Computer Engineering",
+      "Mechanical Engineering",
+      "Civil Engineering",
+      "Chemical Engineering",
+      "Aerospace Engineering",
+      "Biomedical Engineering",
+      "Environmental Engineering",
+      "Industrial Engineering",
+      "Materials Engineering",
+      "Nuclear Engineering",
+      "Petroleum Engineering",
+      "Robotics Engineering",
+      "Biotechnology Engineering",
+    ],
+  });
+});
+
 // if request don't match any route
 app.get("*", (req, res) => {
   throw new ExpressError(404, "Page not found");

@@ -359,7 +359,7 @@ export const AttendanceForm = () => {
         )}
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button>Submit</Button>
+            <Button variant="outline">Submit</Button>
           </AlertDialogTrigger>
           <AlertDialogContent side="top">
             <AlertDialogHeader>
