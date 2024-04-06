@@ -9,10 +9,24 @@ import {
   Mail,
 } from "lucide-react";
 import { RecoilRoot } from "recoil";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Toaster } from "@/components/ui/toaster";
+import { useEffect } from "react";
 
 export const Faculty = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchData = async () => {
+      const token = localStorage.getItem("token");
+      if (!token || token.split(" ")[0] !== "Faculty") {
+        navigate("/signin");
+        return;
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <RecoilRoot>
       <div className="flex">

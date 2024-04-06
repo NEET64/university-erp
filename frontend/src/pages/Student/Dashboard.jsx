@@ -15,6 +15,12 @@ export const StudentDashboard = () => {
       .get("http://localhost:8000/attendance/65c657dbaf0982c4aebeedc1")
       .then((response) => {
         setAttendance(response.data.attendance);
+      })
+      .catch((err) => {
+        toast({
+          variant: "destructive",
+          title: err.message,
+        });
       });
   }, []);
 
@@ -22,7 +28,7 @@ export const StudentDashboard = () => {
     <>
       <Header title="Dashboard" />
 
-      <div className="mt-2 grow grid grid-cols-4 grid-rows-12 gap-2 sm:grid-cols-8 md:grid-cols-11 md:grid-rows-8">
+      {/* <div className="mt-2 grow grid grid-cols-4 grid-rows-12 gap-2 sm:grid-cols-8 md:grid-cols-11 md:grid-rows-8">
         <div className="bg-white rounded-md col-span-2">1</div>
         <div className="bg-white rounded-md col-span-2 col-start-3 sm:col-start-3">
           2
@@ -50,7 +56,8 @@ export const StudentDashboard = () => {
         md:col-span-3 md:row-span-4 md:col-start-9 md:row-start-5">
           <NotificationList />
         </div>
-      </div>
+      </div> */}
+
       {/* <div className="flex flex-wrap gap-2 sm:flex-nowrap md:flex-nowrap md:flex-wrap">
         <div className="bg-white rounded-md w-full sm:w-1/4 md:w-2/12">1</div>
         <div className="bg-white rounded-md w-full sm:w-1/4 md:w-2/12 sm:ml-auto">
@@ -79,26 +86,26 @@ export const StudentDashboard = () => {
         </div>
       </div> */}
 
-      {/* <div className="mt-2 w-full flex gap-2 flex-1">
-        <div>
+      <div className="mt-2 w-full flex gap-2 flex-1 justify-center">
+        <div className="grow">
           <div className="flex flex-col">
             <div className="flex gap-2">
-              <div className="min-w-[00px] max-w-[700px] h-[300px] grow bg-white rounded-md">
+              <div className="grow bg-white rounded-md">
                 <Chart />
               </div>
-              <div className="grow bg-white rounded-md min-w-[300px]">
+              <div className="grow bg-white rounded-md w-[30%]">
                 <AttendanceMeta />
               </div>
             </div>
             <div>
-              <div className="bg-white rounded-md min-h-[482px]">
-                <AssignmentMeta />
+              <div className="bg-white rounded-md">
+                <AssignmentMeta searchBy="title" />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 w-[250px]">
           <div className="bg-white rounded-md ">
             <Calendar events={attendance} belongsTo="student" isSmall={true} />
           </div>
@@ -106,7 +113,7 @@ export const StudentDashboard = () => {
             <NotificationList />
           </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };

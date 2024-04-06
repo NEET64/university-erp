@@ -1,5 +1,33 @@
 const Student = require("../models/student");
 
+const jwt = require("jsonwebtoken");
+
+module.exports.studentSignin = async (req, res) => {
+  // const { success } = UserSignInSchema.safeParse(req.body);
+  // if (!success) {
+  //   return res.status(400).json({
+  //     message: "Incorrect Input",
+  //   });
+  // }
+
+  const user = await Student.findOne({
+    name: req.body.username,
+    password: req.body.password,
+  });
+  if (!user) {
+    return res.status(400).json({
+      message: "Username or Password is incorrect",
+    });
+  }
+  const studentId = user._id;
+  const token = jwt.sign({ studentId }, process.env.JWT_SECRET);
+  res.json({
+    message: "user Found",
+    name: user.name,
+    token: token,
+  });
+};
+
 module.exports.getStudents = async (req, res) => {
   let classId = req.query.id || "";
   let students = await Student.find({}).populate("class");
@@ -42,7 +70,6 @@ module.exports.deleteStudent = async (req, res) => {
 };
 
 module.exports.getStudentById = async (req, res) => {
-  console.log("hello");
   let { id } = req.params;
   try {
     let student = await Student.findById(id).populate({
@@ -59,8 +86,6 @@ module.exports.getStudentById = async (req, res) => {
       },
     });
 
-    console.log(student);
-
     if (!student) {
       return res.status(404).json({ error: "Student not found" });
     }
@@ -69,7 +94,6 @@ module.exports.getStudentById = async (req, res) => {
       student,
     });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: "Internal server error" });
   }
 };

@@ -11,9 +11,6 @@ import {
 import { Progress } from "./ui/progress";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
-function stringToRGB(index) {
-  return "bg-indigo-400";
-}
 
 export const AttendanceMeta = () => {
   const [metadata, setMetadata] = useState({});
@@ -21,10 +18,10 @@ export const AttendanceMeta = () => {
     axios
       .get("http://localhost:8000/attendance/metadata/65c657dbaf0982c4aebeedc1")
       .then((response) => {
-        console.log(response.data.metadata);
         setMetadata(response.data.metadata);
       });
   }, []);
+
   return (
     <div className="flex flex-col p-3">
       <div className="text-lg border-b font-semibold flex justify-between items-center pb-2">
@@ -52,7 +49,7 @@ export const AttendanceMeta = () => {
               </span>
             </div>
             <ProgressDemo
-              color={stringToRGB(courseId.courseName)}
+              color={"bg-violet-500"}
               previous={0}
               current={
                 courseId.total == 0

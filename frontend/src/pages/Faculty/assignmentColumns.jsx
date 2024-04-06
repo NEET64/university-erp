@@ -22,7 +22,10 @@ const deleteCourse = (AssignmentId) => {
       window.location.reload();
     })
     .catch((error) => {
-      console.error("Error deleting assignment:", error);
+      toast({
+        variant: "destructive",
+        title: err.message,
+      });
     });
 };
 

@@ -32,7 +32,10 @@ const AssignmentCourse = () => {
         setAssignments(response.data);
       })
       .catch(function (error) {
-        console.log(error);
+        toast({
+          variant: "destructive",
+          title: err.message,
+        });
       });
   }, []);
 
@@ -43,24 +46,21 @@ const AssignmentCourse = () => {
   return (
     <>
       <Header />
-      <Card className="mx-80">
-        {
-          <CardContent className="grid grid-cols-1 mt-4  gap-4 md:grid-cols-2 md:gap-0">
-            <div className="flex flex-col items-center">
-              <p className="text-slate-800 font-bold ">Course</p>
-              <p className="text-slate-500">{courseName}</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <p className="text-slate-800 font-bold ">Faculty</p>
-              <p className="text-slate-500">{facultyName}</p>
-            </div>
-          </CardContent>
-        }
-      </Card>
       <DataTable
         columns={CourseAssignmentColumns}
         data={assignments}
-        searchBy={"course"}></DataTable>
+        searchBy={"course"}>
+        <div className="flex gap-2">
+          <span className="bg-white w-54 flex gap-2 justify-center items-center px-5 rounded-md">
+            <p className="text-slate-600">Course: </p>
+            <p className="text-slate-600 font-semibold">{courseName}</p>
+          </span>
+          <span className="bg-white w-54 flex gap-2 justify-center items-center px-5 rounded-md">
+            <p className="text-slate-600">Faculty: </p>
+            <p className="text-slate-600 font-semibold">{facultyName}</p>
+          </span>
+        </div>
+      </DataTable>
     </>
   );
 };

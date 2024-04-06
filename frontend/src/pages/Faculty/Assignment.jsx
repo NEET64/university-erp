@@ -43,6 +43,12 @@ export const Assignment = () => {
       .get("http://localhost:8000/assignment/faculty/" + faculty)
       .then((response) => {
         setAssignments(response.data);
+      })
+      .catch((err) => {
+        toast({
+          variant: "destructive",
+          title: err.message,
+        });
       });
   }, []);
 
@@ -56,7 +62,10 @@ export const Assignment = () => {
   return (
     <div>
       <Header title="Assignment" />
-      <DataTable columns={AssignmentColumns} data={assignments}>
+      <DataTable
+        columns={AssignmentColumns}
+        data={assignments}
+        searchBy="title">
         <AssignmentForm />
       </DataTable>
     </div>

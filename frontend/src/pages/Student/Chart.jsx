@@ -11,12 +11,13 @@ export const Chart = () => {
     axios
       .get("http://localhost:8000/attendance/chart/65c657dbaf0982c4aebeedc1")
       .then((response) => {
-        // console.log(response.data.data);
-        // setResponse(response.data.data);
         setData(response.data.data);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        toast({
+          variant: "destructive",
+          title: err.message,
+        });
       });
   }, []);
   // useEffect(() => {

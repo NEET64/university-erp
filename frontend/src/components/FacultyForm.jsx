@@ -76,7 +76,6 @@ export const FacultyForm = () => {
     axios
       .post("http://localhost:8000/faculty", values)
       .then((response) => {
-        console.log(response.data);
         toast({
           title: response.data.message,
         });

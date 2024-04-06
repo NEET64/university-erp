@@ -91,22 +91,22 @@ export function AdminDashboard() {
         <TabsList className="grid h-12 gap-1 w-full grid-cols-4 bg-white">
           <TabsTrigger
             value="classes"
-            className="h-10 rounded data-[state=active]:bg-gradient-to-tr data-[state=active]:from-indigo-200 data-[state=active]:to-indigo-100 data-[state=active]:text-indigo-800 hover:bg-indigo-50">
+            className="h-10 rounded data-[state=active]:bg-gradient-to-tr data-[state=active]:from-violet-200 data-[state=active]:to-violet-100 data-[state=active]:text-violet-800 hover:bg-violet-50">
             Classes
           </TabsTrigger>
           <TabsTrigger
             value="courses"
-            className="h-10 rounded data-[state=active]:bg-gradient-to-tr data-[state=active]:from-indigo-200 data-[state=active]:to-indigo-100 data-[state=active]:text-indigo-800 hover:bg-indigo-50">
+            className="h-10 rounded data-[state=active]:bg-gradient-to-tr data-[state=active]:from-violet-200 data-[state=active]:to-violet-100 data-[state=active]:text-violet-800 hover:bg-violet-50">
             Courses
           </TabsTrigger>
           <TabsTrigger
             value="faculties"
-            className="h-10 rounded data-[state=active]:bg-gradient-to-tr data-[state=active]:from-indigo-200 data-[state=active]:to-indigo-100 data-[state=active]:text-indigo-800 hover:bg-indigo-50">
+            className="h-10 rounded data-[state=active]:bg-gradient-to-tr data-[state=active]:from-violet-200 data-[state=active]:to-violet-100 data-[state=active]:text-violet-800 hover:bg-violet-50">
             Faculties
           </TabsTrigger>
           <TabsTrigger
             value="students"
-            className="h-10 rounded data-[state=active]:bg-gradient-to-tr data-[state=active]:from-indigo-200 data-[state=active]:to-indigo-100 data-[state=active]:text-indigo-800 hover:bg-indigo-50">
+            className="h-10 rounded data-[state=active]:bg-gradient-to-tr data-[state=active]:from-violet-200 data-[state=active]:to-violet-100 data-[state=active]:text-violet-800 hover:bg-violet-50">
             Students
           </TabsTrigger>
         </TabsList>

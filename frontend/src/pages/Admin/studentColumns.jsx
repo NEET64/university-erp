@@ -29,12 +29,13 @@ const deleteStudent = (studentId) => {
   axios
     .delete(`http://localhost:8000/student/${studentId}`)
     .then((response) => {
-      console.log(response.data);
-
       window.location.reload();
     })
     .catch((error) => {
-      console.error("Error deleting student:", error);
+      toast({
+        variant: "destructive",
+        title: err.message,
+      });
     });
 };
 

@@ -11,6 +11,12 @@ export const StudentAttendance = () => {
       .get("http://localhost:8000/attendance/65c657dbaf0982c4aebeedc1")
       .then((response) => {
         setAttendance(response.data.attendance);
+      })
+      .catch((err) => {
+        toast({
+          variant: "destructive",
+          title: err.message,
+        });
       });
   }, []);
 

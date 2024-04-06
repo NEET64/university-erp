@@ -100,10 +100,6 @@ export const CourseAssignmentColumns = [
     id: "actions",
     cell: ({ row }) => {
       const { toast } = useToast();
-      console.log(row.original.aim);
-      console.log(row.original.title);
-      console.log(row.original.course.name);
-      console.log(row.original.course.code);
 
       const dueDate = new Date(row.original.dueOn).toLocaleDateString();
       const postDate = new Date(row.original.postedOn).toLocaleDateString();
@@ -154,13 +150,7 @@ export const CourseAssignmentColumns = [
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction
-                  onClick={() => {
-                    console.log("submit here");
-                  }}
-                >
-                  Submit
-                </AlertDialogAction>
+                <AlertDialogAction>Submit</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
@@ -182,8 +172,7 @@ const DataTableColumnHeader = ({ column, title, className }) => {
           <Button
             variant="ghost"
             size="sm"
-            className="-ml-3 h-8 data-[state=open]:bg-accent"
-          >
+            className="-ml-3 h-8 data-[state=open]:bg-accent">
             <span>{title}</span>
             {column.getIsSorted() === "desc" ? (
               <ArrowDown className="ml-2 h-4 w-4" />

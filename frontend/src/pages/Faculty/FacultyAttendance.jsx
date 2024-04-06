@@ -22,17 +22,17 @@ export const FacultyAttendanceCalender = () => {
       .get("http://localhost:8000/attendance/faculty/65c5e6db85c4191c88d6e2ce")
       .then((response) => {
         setFacultyAttendance(response.data.attendance);
+      })
+      .catch((err) => {
+        toast({
+          variant: "destructive",
+          title: err.message,
+        });
       });
   }, []);
 
   return (
     <>
-      <Button asChild variant="outline" className="flex p-2 w-48">
-        <Link to="/faculty/attendance/post">
-          Post Attendance
-          <Plus className="block p-1 rounded-md ml-2 -mb-0.5 bg-slate-200" />
-        </Link>
-      </Button>
       <Calendar events={facultyAttendance} belongsTo={"faculty"} />
     </>
   );

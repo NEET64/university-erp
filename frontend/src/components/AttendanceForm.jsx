@@ -47,6 +47,7 @@ import {
 import { useToast } from "./ui/use-toast";
 import { useNavigate } from "react-router-dom";
 import { ToastDescription } from "./ui/toast";
+import { Header } from "./Header";
 
 const formSchema = z.object({
   course: z.string(),
@@ -73,7 +74,6 @@ export const AttendanceForm = () => {
     axios
       .post("http://localhost:8000/attendance", values)
       .then((response) => {
-        console.log(response.data.data);
         const formattedValues = convertDataToHTML(response.data.data);
         toast({
           title: response.data.message,
@@ -81,8 +81,7 @@ export const AttendanceForm = () => {
             <ToastDescription
               dangerouslySetInnerHTML={{
                 __html: formattedValues,
-              }}
-            ></ToastDescription>
+              }}></ToastDescription>
           ),
         });
         navigate("/faculty/attendance/view", { replace: true });
@@ -122,7 +121,6 @@ export const AttendanceForm = () => {
         setCourses(response.data.courses);
       })
       .catch((err) => {
-        console.log(err);
         toast({
           variant: "destructive",
           title: err.message,
@@ -159,8 +157,9 @@ export const AttendanceForm = () => {
 
   return (
     <Form {...form}>
+      <Header title={"Attendance"} />
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="bg-white rounded-lg p-3 my-2 shadow-lg flex justify-start gap-3">
+        <div className="bg-white rounded-lg p-3 my-2 shadow-lg flex justify-start gap-3 mt-4">
           <FormField
             control={form.control}
             name="course"
@@ -169,8 +168,7 @@ export const AttendanceForm = () => {
                 <FormLabel>Course</FormLabel>
                 <Select
                   onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
+                  defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a Course" />
@@ -200,8 +198,7 @@ export const AttendanceForm = () => {
                     setClassId(event); // Assuming setClassId updates state
                     field.onChange(event); // Call field.onChange if necessary
                   }}
-                  defaultValue={field.value}
-                >
+                  defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a Class" />
@@ -228,8 +225,7 @@ export const AttendanceForm = () => {
                 <FormLabel>Lectures</FormLabel>
                 <Select
                   onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
+                  defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a Lecture" />
@@ -278,8 +274,7 @@ export const AttendanceForm = () => {
                         className={cn(
                           "pl-3 text-left font-normal",
                           !field.value && "text-muted-foreground"
-                        )}
-                      >
+                        )}>
                         {field.value ? (
                           format(field.value, "PPP")
                         ) : (
@@ -324,8 +319,7 @@ export const AttendanceForm = () => {
                         return (
                           <FormItem
                             key={student._id}
-                            className="flex flex-row items-center space-x-3 space-y-0"
-                          >
+                            className="flex flex-row items-center space-x-3 space-y-0">
                             <FormControl>
                               <Checkbox
                                 checked={field.value?.includes(student._id)}
@@ -374,8 +368,7 @@ export const AttendanceForm = () => {
                 onClick={() => {
                   const values = form.getValues();
                   onSubmit(values);
-                }}
-              >
+                }}>
                 Confirm
               </AlertDialogAction>
             </AlertDialogFooter>

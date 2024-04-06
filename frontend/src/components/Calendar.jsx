@@ -52,7 +52,7 @@ export const Calendar = ({ events, belongsTo, isSmall }) => {
 
   return (
     <>
-      <div className={`grow ${isSmall ? "small" : ""}`}>
+      <div className={`${isSmall ? "" : "grow"}`}>
         {!isSmall ? (
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-semibold text-white pr-2">
@@ -155,8 +155,8 @@ const DayWithHoverCard = ({ day, isToday, todaysEvent, belongsTo }) => (
     <HoverCardTrigger>
       <div className="flex justify-center items-center">
         <div
-          className={`h-8 w-8 rounded-full flex items-center justify-center m-1 place-items-center hover:bg-indigo-200 transition ${
-            isToday && "bg-indigo-200"
+          className={`h-8 w-8 rounded-full flex items-center justify-center m-1 place-items-center hover:bg-violet-300 transition ${
+            isToday && "bg-violet-300"
           }`}
           style={{ aspectRatio: "1 / 1", width: "2rem" }}>
           <span className="text-center">{format(day, "d")}</span>

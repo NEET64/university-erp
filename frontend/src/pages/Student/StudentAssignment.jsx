@@ -30,7 +30,10 @@ const StudentAssignment = () => {
         setStundent(response.data.student);
       })
       .catch((err) => {
-        console.log(err);
+        toast({
+          variant: "destructive",
+          title: err.message,
+        });
       });
   }, []);
 
@@ -38,12 +41,9 @@ const StudentAssignment = () => {
     <>
       <Header title="Courses" />
 
-      <div className="grid grid-cols-1 gap-8 mx-16 mt-4">
+      <div className="grid grid-cols-1 gap-3 mx-1 mt-4">
         {student &&
           student.class.courseTeaching.map((course, index) => {
-            {
-              console.log(course);
-            }
             return (
               <Card className="" key={index}>
                 <CardHeader>
@@ -70,7 +70,6 @@ const StudentAssignment = () => {
                   </div>
 
                   <Button variant="outline" className="p-0">
-                    {/* {console.log(course.courseId.name)} */}
                     <Link
                       to={`/student/assignment/test?courseId=${course.courseId._id}&courseName=${course.courseId.name}&facultyName=${course.facultyId.name}`}
                       className="hover:bg-indigo-50 w-full h-full p-2">

@@ -75,23 +75,21 @@ export const StudentForm = () => {
   }, []);
 
   const onSubmit = (values) => {
-    console.log(values);
-    // axios
-    //   .post("http://localhost:8000/student", values)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     toast({
-    //       title: response.data.message,
-    //     });
+    axios
+      .post("http://localhost:8000/student", values)
+      .then((response) => {
+        toast({
+          title: response.data.message,
+        });
 
-    //     window.location.reload();
-    //   })
-    //   .catch((err) => {
-    //     toast({
-    //       variant: "destructive",
-    //       title: err.message,
-    //     });
-    //   });
+        window.location.reload();
+      })
+      .catch((err) => {
+        toast({
+          variant: "destructive",
+          title: err.message,
+        });
+      });
   };
 
   return (

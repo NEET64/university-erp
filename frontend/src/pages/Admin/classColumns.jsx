@@ -36,12 +36,13 @@ const deleteClass = (classId) => {
   axios
     .delete(`http://localhost:8000/class/${classId}`)
     .then((response) => {
-      console.log(response.data);
-
       window.location.reload();
     })
     .catch((error) => {
-      console.error("Error deleting class:", error);
+      toast({
+        variant: "destructive",
+        title: err.message,
+      });
     });
 };
 
@@ -167,7 +168,6 @@ export const ClassColumns = [
                     toast({
                       title: JSON.stringify(row.original),
                     });
-                    console.log(row.original);
                   }}>
                   <Eye className="mr-2 h-4 w-4" />
                   View Course
@@ -261,7 +261,6 @@ export const ClassColumns = [
                   toast({
                     title: JSON.stringify(row.original),
                   });
-                  console.log(row.original);
                 }}>
                 <Eye className="mr-2 h-4 w-4" />
                 View

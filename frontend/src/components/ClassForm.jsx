@@ -123,7 +123,6 @@ export const ClassForm = () => {
     axios
       .post("http://localhost:8000/class", values)
       .then((response) => {
-        console.log(response.data);
         toast({
           title: response.data.message,
         });
@@ -344,9 +343,6 @@ export function FacultyCourseInput({
                             newSelectedValues.set(course._id, facultyId);
                             setSelectedValuesState(newSelectedValues);
                             setSelectedCourses(
-                              Array.from(newSelectedValues.entries())
-                            );
-                            console.log(
                               Array.from(newSelectedValues.entries())
                             );
                           }}>

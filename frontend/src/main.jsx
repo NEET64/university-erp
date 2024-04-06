@@ -26,6 +26,11 @@ import { StudentAttendance } from "./pages/Student/StudentAttendance";
 import StudentAssignment from "./pages/Student/StudentAssignment";
 import AssignmentCourse from "./pages/Student/AssignmentCourse";
 import NotFoundPage from "./pages/NotFound";
+import { Login } from "./pages/Login";
+import { FacultyDashboard } from "./pages/Faculty/Dashboard";
+import { Fees } from "./pages/Student/Fees";
+import { StudentSettings } from "./pages/Settings";
+import { HelpPage } from "./pages/Help";
 // import { Courses } from "./pages/Admin/Courses";
 // import { StudentAttendance } from "./pages/Student/StudentAttendance";
 // import { Assignment } from "./pages/Faculty/Assignment";
@@ -39,30 +44,28 @@ const router = createBrowserRouter([
     element: <Faculty />,
     children: [
       {
-        path: "/faculty/dashboard",
-        element: <Header title="Dashboard" />,
+        path: "/faculty/",
+        element: <Navigate to="/faculty/dashboard" replace />,
       },
       {
-        path: "/faculty/attendance",
-        element: <FacultyAttendance />,
-        children: [
-          {
-            path: "/faculty/attendance",
-            element: <Navigate to="/faculty/attendance/view" replace />,
-          },
-          {
-            path: "/faculty/attendance/view",
-            element: <FacultyAttendanceCalender />,
-          },
-          {
-            path: "/faculty/attendance/post",
-            element: <AttendanceForm />,
-          },
-        ],
+        path: "/faculty/dashboard",
+        element: <FacultyDashboard />,
+      },
+      {
+        path: "/faculty/attendance/",
+        element: <AttendanceForm />,
       },
       {
         path: "/faculty/assignment",
         element: <Assignment />,
+      },
+      {
+        path: "/faculty/settings",
+        element: <StudentSettings />,
+      },
+      {
+        path: "/faculty/help",
+        element: <HelpPage />,
       },
       {
         path: "/faculty/:anything",
@@ -99,6 +102,14 @@ const router = createBrowserRouter([
         element: <Classes />,
       },
       {
+        path: "/admin/settings",
+        element: <StudentSettings />,
+      },
+      {
+        path: "/admin/help",
+        element: <HelpPage />,
+      },
+      {
         path: "/admin/:anything",
         element: <Header title="Feature Coming Soon" />,
       },
@@ -131,7 +142,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/student/fees",
-        element: <Header title="Fees" />,
+        element: <Fees />,
+      },
+      {
+        path: "/student/Settings",
+        element: <StudentSettings />,
+      },
+      {
+        path: "/student/help",
+        element: <HelpPage />,
       },
       {
         path: "/student/:anything",
@@ -141,7 +160,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/*",
-    element: <NotFoundPage />,
+    element: <Login />,
   },
 ]);
 

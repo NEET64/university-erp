@@ -53,10 +53,17 @@ export const Attendance = () => {
     console.log(values);
   }
   useEffect(() => {
-    axios.get("http://localhost:8000/course").then((response) => {
-      setCourses(response.data.courses);
-      console.log(response.data.courses);
-    });
+    axios
+      .get("http://localhost:8000/course")
+      .then((response) => {
+        setCourses(response.data.courses);
+      })
+      .catch((err) => {
+        toast({
+          variant: "destructive",
+          title: err.message,
+        });
+      });
   }, []);
 
   return (
@@ -85,8 +92,7 @@ export const Attendance = () => {
                 <FormLabel>Email</FormLabel>
                 <Select
                   onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
+                  defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a verified email to display" />

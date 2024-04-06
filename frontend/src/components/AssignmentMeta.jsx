@@ -46,7 +46,7 @@ export function AssignmentMeta() {
         <Button asChild variant="outline">
           <Link
             className=" h-6 w-14 text-xs text-slate-400"
-            to="/student/attendance">
+            to="/student/assignment">
             View All
           </Link>
         </Button>

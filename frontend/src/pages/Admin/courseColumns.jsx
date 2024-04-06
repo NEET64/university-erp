@@ -33,16 +33,16 @@ import { Separator } from "@/components/ui/separator";
 import { PopoverArrow } from "@radix-ui/react-popover";
 
 const deleteCourse = (courseId) => {
-  console.log(courseId);
   axios
     .delete(`http://localhost:8000/course/${courseId}`)
     .then((response) => {
-      console.log(response.data);
-
       window.location.reload();
     })
     .catch((error) => {
-      console.error("Error deleting class:", error);
+      toast({
+        variant: "destructive",
+        title: err.message,
+      });
     });
 };
 

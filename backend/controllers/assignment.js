@@ -31,7 +31,6 @@ module.exports.createAssignment = async (req, res) => {
       assignment: newAssignment,
     });
   } catch (error) {
-    console.error("Error creating assignment:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
@@ -58,8 +57,6 @@ module.exports.courseAssignment = async (req, res) => {
 
 // get assignments for each faculty
 module.exports.facultyAllAssignment = async (req, res) => {
-  console.log(req.params);
-
   const facultyAssignments = await Assignment.find({
     faculty: req.params.facultyid,
   })
@@ -75,8 +72,6 @@ module.exports.deleteAssignment = async (req, res) => {
   const deletedassignment = await Assignment.findOneAndDelete({
     _id: req.params.assignmentid,
   });
-
-  console.log(deletedassignment);
 
   res.status(200).json({
     message: "Assignment deleted successfully",

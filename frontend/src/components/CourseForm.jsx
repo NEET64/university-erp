@@ -45,7 +45,6 @@ export const CourseForm = () => {
     axios
       .post("http://localhost:8000/course", values)
       .then((response) => {
-        console.log(response.data);
         toast({
           title: response.data.message,
         });

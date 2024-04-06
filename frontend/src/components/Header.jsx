@@ -53,9 +53,9 @@ export const Header = ({ title }) => {
           </HoverCardTrigger>
           <HoverCardContent className="w-auto p-3 mr-2">
             <div className="leading-4 text-right">
-              <h4 className="font-semibold">Harsh Padsala</h4>
+              <h4 className="font-semibold">{localStorage.getItem("name")}</h4>
               <span className="text-xs text-gray-600">
-                21se02cs046@ppsu.ac.in
+                {localStorage.getItem("role")}
               </span>
             </div>
           </HoverCardContent>

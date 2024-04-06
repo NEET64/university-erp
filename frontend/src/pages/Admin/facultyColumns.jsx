@@ -41,7 +41,10 @@ const deleteFaculty = (facultyId) => {
       window.location.reload();
     })
     .catch((error) => {
-      console.error("Error deleting Faculty:", error);
+      toast({
+        variant: "destructive",
+        title: err.message,
+      });
     });
 };
 

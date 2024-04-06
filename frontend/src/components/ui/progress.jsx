@@ -12,7 +12,6 @@ const Progress = React.forwardRef(
         className
       )}
       {...props}>
-      {console.log(color)}
       <ProgressPrimitive.Indicator
         className={
           "h-full w-full flex-1 transition-all dark:bg-slate-50 " + color
