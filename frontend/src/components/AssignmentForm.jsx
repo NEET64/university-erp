@@ -51,13 +51,13 @@ export const AssignmentForm = () => {
       aim: "",
       class: "",
       course: "",
-      faculty: "660c6c7cb74446ead4053ecc",
+      faculty: "65c5e6db85c4191c88d6e2ce",
     },
   });
 
   const [course, setCourse] = useState([]);
   const [classes, setClasses] = useState([]);
-  const [faculty, setFaculty] = useState("660c6c7cb74446ead4053ecc");
+  const [faculty, setFaculty] = useState("65c5e6db85c4191c88d6e2ce");
   const { toast } = useToast();
 
   const onSubmit = (values) => {
@@ -160,8 +160,7 @@ export const AssignmentForm = () => {
                     <FormLabel className="text-left">Class</FormLabel>
                     <Select
                       onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
+                      defaultValue={field.value}>
                       <FormControl className="col-span-3">
                         <SelectTrigger>
                           <SelectValue placeholder="Select Class" />
@@ -191,8 +190,7 @@ export const AssignmentForm = () => {
                     <FormLabel className="text-left">Course</FormLabel>
                     <Select
                       onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
+                      defaultValue={field.value}>
                       <FormControl className="col-span-3">
                         <SelectTrigger>
                           <SelectValue placeholder="Select Class" />

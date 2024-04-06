@@ -25,15 +25,16 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
-import { AssignmentDataTable } from "./AssignmentDataTable";
+// import { AssignmentDataTable } from "./AssignmentDataTable";
 import { AssignmentColumns } from "./assignmentColumns";
 import { AssignmentForm } from "@/components/AssignmentForm";
+import { DataTable } from "@/components/DataTable";
 
 export const Assignment = () => {
   const [assignments, setAssignments] = useState([]);
   const [course, setCourse] = useState([]);
   const [students, setStudents] = useState([]);
-  const [faculty, setFaculty] = useState("660c6c7cb74446ead4053ecc");
+  const [faculty, setFaculty] = useState("65c5e6db85c4191c88d6e2ce");
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -42,6 +43,12 @@ export const Assignment = () => {
       .get("http://localhost:8000/assignment/faculty/" + faculty)
       .then((response) => {
         setAssignments(response.data);
+      })
+      .catch((err) => {
+        toast({
+          variant: "destructive",
+          title: err.message,
+        });
       });
   }, []);
 
@@ -55,11 +62,12 @@ export const Assignment = () => {
   return (
     <div>
       <Header title="Assignment" />
-      <AssignmentForm></AssignmentForm>
-      <AssignmentDataTable
+      <DataTable
         columns={AssignmentColumns}
         data={assignments}
-      ></AssignmentDataTable>
+        searchBy="title">
+        <AssignmentForm />
+      </DataTable>
     </div>
   );
 };

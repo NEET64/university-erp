@@ -5,6 +5,10 @@ const facultySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  password: {
+    type: String,
+    default: "pass",
+  },
   courses: [
     {
       type: mongoose.Schema.Types.ObjectId,

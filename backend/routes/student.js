@@ -6,6 +6,7 @@ const {
   deleteStudent,
   getStudents,
   getStudentById,
+  studentSignin,
 } = require("../controllers/student");
 const router = express.Router();
 
@@ -17,6 +18,7 @@ router.get("/dashboard", (req, res) => {
 
 router.route("/").get(wrapAsync(getStudents)).post(wrapAsync(createStudent));
 
+router.route("/signin").post(wrapAsync(studentSignin));
 router
   .route("/:id")
   .get(wrapAsync(getStudentById))

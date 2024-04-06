@@ -3,6 +3,8 @@ import { Link, Outlet } from "react-router-dom";
 import { Calendar } from "@/components/Calendar";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
 
 export const FacultyAttendance = () => {
   return (
@@ -17,15 +19,20 @@ export const FacultyAttendanceCalender = () => {
   const [facultyAttendance, setFacultyAttendance] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/attendance/faculty/65e9f70d642440f8ab0026f5")
+      .get("http://localhost:8000/attendance/faculty/65c5e6db85c4191c88d6e2ce")
       .then((response) => {
         setFacultyAttendance(response.data.attendance);
+      })
+      .catch((err) => {
+        toast({
+          variant: "destructive",
+          title: err.message,
+        });
       });
   }, []);
 
   return (
     <>
-      <Link to="/faculty/attendance/post">Post Attendance</Link>
       <Calendar events={facultyAttendance} belongsTo={"faculty"} />
     </>
   );

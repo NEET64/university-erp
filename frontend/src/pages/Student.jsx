@@ -8,9 +8,22 @@ import {
   HelpCircle,
 } from "lucide-react";
 import { RecoilRoot } from "recoil";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export const Student = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchData = async () => {
+      const token = localStorage.getItem("token");
+      if (!token || token.split(" ")[0] !== "Student") {
+        navigate("/signin");
+        return;
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <RecoilRoot>
       <div className="flex">
@@ -27,7 +40,7 @@ export const Student = () => {
           <SidebarItem icon={<HelpCircle size={20} />} text={"Help"} />
         </Sidebar>
 
-        <div className="flex-1 my-2 mx-2 flex flex-col">
+        <div className="flex-1 my-2 px-2 flex flex-col">
           <Outlet />
         </div>
       </div>

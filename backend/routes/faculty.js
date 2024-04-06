@@ -6,6 +6,7 @@ const {
   editFaculty,
   deleteFaculty,
   facultyCourses,
+  facultySignin,
 } = require("../controllers/faculty");
 const router = express.Router();
 
@@ -16,6 +17,8 @@ router.get("/dashboard", (req, res) => {
 });
 
 router.route("/").get(wrapAsync(allFaculties)).post(wrapAsync(createFaculty));
+
+router.route("/signin").post(wrapAsync(facultySignin));
 
 router
   .route("/:id")

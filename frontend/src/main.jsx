@@ -15,13 +15,28 @@ import {
   FacultyAttendanceCalender,
 } from "./pages/Faculty/FacultyAttendance";
 import { StudentDashboard } from "./pages/Student/Dashboard";
-
-import { StudentAttendance } from "./pages/Student/StudentAttendance";
-import { Assignment } from "./pages/Faculty/Assignment";
-import StudentAssignment from "./pages/Student/StudentAssignment";
 import { AttendanceForm } from "./components/AttendanceForm";
-import { Course } from "./pages/Admin/Course";
+import { Assignment } from "./pages/Faculty/Assignment";
+import { AdminDashboard } from "./pages/Admin/Dashboard";
+import { Courses } from "./pages/Admin/Courses";
+import { Students } from "./pages/Admin/Students";
+import { Faculties } from "./pages/Admin/Faculties";
+import { Classes } from "./pages/Admin/Classes";
+import { StudentAttendance } from "./pages/Student/StudentAttendance";
+import StudentAssignment from "./pages/Student/StudentAssignment";
 import AssignmentCourse from "./pages/Student/AssignmentCourse";
+import NotFoundPage from "./pages/NotFound";
+import { Login } from "./pages/Login";
+import { FacultyDashboard } from "./pages/Faculty/Dashboard";
+import { Fees } from "./pages/Student/Fees";
+import { StudentSettings } from "./pages/Settings";
+import { HelpPage } from "./pages/Help";
+// import { Courses } from "./pages/Admin/Courses";
+// import { StudentAttendance } from "./pages/Student/StudentAttendance";
+// import { Assignment } from "./pages/Faculty/Assignment";
+// import StudentAssignment from "./pages/Student/StudentAssignment";
+// import { AttendanceForm } from "./components/AttendanceForm";
+// import AssignmentCourse from "./pages/Student/AssignmentCourse";
 
 const router = createBrowserRouter([
   {
@@ -29,30 +44,28 @@ const router = createBrowserRouter([
     element: <Faculty />,
     children: [
       {
-        path: "/faculty/dashboard",
-        element: <Header title="Dashboard" />,
+        path: "/faculty/",
+        element: <Navigate to="/faculty/dashboard" replace />,
       },
       {
-        path: "/faculty/attendance",
-        element: <FacultyAttendance />,
-        children: [
-          {
-            path: "/faculty/attendance",
-            element: <Navigate to="/faculty/attendance/view" replace />,
-          },
-          {
-            path: "/faculty/attendance/view",
-            element: <FacultyAttendanceCalender />,
-          },
-          {
-            path: "/faculty/attendance/post",
-            element: <AttendanceForm />,
-          },
-        ],
+        path: "/faculty/dashboard",
+        element: <FacultyDashboard />,
+      },
+      {
+        path: "/faculty/attendance/",
+        element: <AttendanceForm />,
       },
       {
         path: "/faculty/assignment",
         element: <Assignment />,
+      },
+      {
+        path: "/faculty/settings",
+        element: <StudentSettings />,
+      },
+      {
+        path: "/faculty/help",
+        element: <HelpPage />,
       },
       {
         path: "/faculty/:anything",
@@ -65,12 +78,36 @@ const router = createBrowserRouter([
     element: <Admin />,
     children: [
       {
-        path: "/admin/dashboard",
-        element: <Header title="Dashboard" />,
+        path: "/admin/",
+        element: <Navigate to="/admin/dashboard/" replace />,
       },
       {
-        path: "/admin/course",
-        element: <Course title="Course" />,
+        path: "/admin/dashboard",
+        element: <AdminDashboard />,
+      },
+      {
+        path: "/admin/courses",
+        element: <Courses />,
+      },
+      {
+        path: "/admin/students",
+        element: <Students />,
+      },
+      {
+        path: "/admin/faculties",
+        element: <Faculties />,
+      },
+      {
+        path: "/admin/classes",
+        element: <Classes />,
+      },
+      {
+        path: "/admin/settings",
+        element: <StudentSettings />,
+      },
+      {
+        path: "/admin/help",
+        element: <HelpPage />,
       },
       {
         path: "/admin/:anything",
@@ -105,13 +142,25 @@ const router = createBrowserRouter([
       },
       {
         path: "/student/fees",
-        element: <Header title="Fees" />,
+        element: <Fees />,
+      },
+      {
+        path: "/student/Settings",
+        element: <StudentSettings />,
+      },
+      {
+        path: "/student/help",
+        element: <HelpPage />,
       },
       {
         path: "/student/:anything",
         element: <Header title="Feature Coming Soon" />,
       },
     ],
+  },
+  {
+    path: "/*",
+    element: <Login />,
   },
 ]);
 

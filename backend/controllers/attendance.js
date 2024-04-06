@@ -1,5 +1,6 @@
 const Attendance = require("../models/attendance");
 const Student = require("../models/student");
+const Class = require("../models/class");
 
 module.exports.getStudentAttendance = async (req, res) => {
   let { studentId } = req.params;
@@ -21,6 +22,61 @@ module.exports.getStudentAttendance = async (req, res) => {
 
   res.json({
     attendance: studentAttendance,
+  });
+};
+
+module.exports.getAttendanceMetadata = async (req, res) => {
+  let { studentId } = req.params;
+  let specificStudent = `students.${studentId}`;
+
+  let studentAttendance = await Attendance.find({
+    [specificStudent]: { $exists: true },
+  })
+    .populate("course", "name")
+    .lean();
+
+  let student = await Student.findById(studentId).populate("class").lean();
+  let classId = student.class._id;
+
+  let allCourses = await Class.findById(classId)
+    .populate("courseTeaching.courseId courseTeaching.facultyId")
+    .lean();
+
+  let courseAttendance = new Map();
+  let total = 0;
+  let present = 0;
+
+  allCourses.courseTeaching.forEach((obj) => {
+    courseAttendance[obj.courseId._id.toString()] = {
+      courseName: obj.courseId.name,
+      courseId: obj.courseId._id,
+      code: obj.courseId.code,
+      facultyName: obj.facultyId.name,
+      facultyId: obj.facultyId._id,
+      present: 0,
+      total: 0,
+    };
+  });
+  studentAttendance.forEach((entry) => {
+    let status = entry.students[studentId];
+    let course = entry.course._id.toString();
+
+    if (courseAttendance[course]) {
+      courseAttendance[course].total++;
+      total++;
+      if (status === "present") {
+        courseAttendance[course].present++;
+        present++;
+      }
+    }
+  });
+
+  res.json({
+    metadata: {
+      present: present,
+      total: total,
+      courses: Array.from(Object.values(courseAttendance)),
+    },
   });
 };
 
@@ -77,11 +133,6 @@ module.exports.getChartData = async (req, res) => {
     previousData.formattedDate = formattedDate;
     previousData.percent = (present / lectures) * 100;
     previousData.percent = previousData.percent.toFixed(2);
-
-    // entry.date = formattedDate;
-    // entry.persent = (present / lectures) * 100;
-    // delete entry.students;
-    // delete entry._id;
   });
   data.push({
     x: previousData.formattedDate,
@@ -142,7 +193,7 @@ module.exports.createAttendance = async (req, res) => {
     attendance: {
       ...
       students: {
-        id: "present" or "absent",
+        1314134134: "present" or "absent",
         id: ...,
         id: ...
       } 
@@ -158,7 +209,7 @@ module.exports.createAttendance = async (req, res) => {
   ]);
   attendance.count = body.students.length;
   res.json({
-    message: `attendance added`,
-    data: attendance,
+    message: `Attendance Added`,
+    data: saved,
   });
 };

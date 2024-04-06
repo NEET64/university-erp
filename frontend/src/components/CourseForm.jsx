@@ -45,7 +45,6 @@ export const CourseForm = () => {
     axios
       .post("http://localhost:8000/course", values)
       .then((response) => {
-        console.log(response.data);
         toast({
           title: response.data.message,
         });
@@ -61,7 +60,7 @@ export const CourseForm = () => {
   };
 
   return (
-    <div className="my-2">
+    <div>
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline" className="flex p-2">
@@ -69,55 +68,56 @@ export const CourseForm = () => {
             <Plus className="block p-1 rounded-md ml-2 -mb-0.5 bg-slate-200" />
           </Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="w-[400px]">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
               <DialogHeader>
-                <DialogTitle>Create Course</DialogTitle>
+                <DialogTitle className="text-2xl">Create Course</DialogTitle>
               </DialogHeader>
-              <DialogDescription className="mb-4 mt-2">
-                This will add a new course to the system. Please provide the
-                following information.
+              <DialogDescription className="mb-4">
+                Please provide the following information.
               </DialogDescription>
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem className="grid grid-cols-4 items-center gap-4">
-                    <FormLabel className="text-left">Course Name</FormLabel>
-                    <FormControl className="col-span-3">
-                      <Input placeholder="Course Name" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="code"
-                render={({ field }) => (
-                  <FormItem className="grid grid-cols-4 items-center gap-4">
-                    <FormLabel className="text-left">Course Code</FormLabel>
-                    <FormControl className="col-span-3">
-                      <Input placeholder="Course Code" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="credit"
-                render={({ field }) => (
-                  <FormItem className="grid grid-cols-4 items-center gap-4">
-                    <FormLabel className="text-left">Credit</FormLabel>
-                    <FormControl className="col-span-3">
-                      <Input placeholder="0" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              <div className="grid w-full items-center gap-4 my-4">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col space-y-1.5">
+                      <FormLabel className="text-left">Course Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Course Name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="code"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col space-y-1.5">
+                      <FormLabel className="text-left">Course Code</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Course Code" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="credit"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col space-y-1.5">
+                      <FormLabel className="text-left">Credit</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Course Credits" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
               <DialogFooter className="mt-4 flex items-center justify-center">
                 <Button type="submit">Submit</Button>
               </DialogFooter>

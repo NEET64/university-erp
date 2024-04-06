@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/card";
 
 const StudentAssignment = () => {
-  const StudentID = "65e9fb37642440f8ab0026fc";
+  const StudentID = "65c657dbaf0982c4aebeedc1";
 
   const [student, setStundent] = useState();
 
@@ -30,7 +30,10 @@ const StudentAssignment = () => {
         setStundent(response.data.student);
       })
       .catch((err) => {
-        console.log(err);
+        toast({
+          variant: "destructive",
+          title: err.message,
+        });
       });
   }, []);
 
@@ -38,12 +41,9 @@ const StudentAssignment = () => {
     <>
       <Header title="Courses" />
 
-      <div className="grid grid-cols-1 gap-8 mx-16 mt-4">
+      <div className="grid grid-cols-1 gap-3 mx-1 mt-4">
         {student &&
           student.class.courseTeaching.map((course, index) => {
-            {
-              console.log(course);
-            }
             return (
               <Card className="" key={index}>
                 <CardHeader>
@@ -69,17 +69,10 @@ const StudentAssignment = () => {
                     <p className="text-slate-500">{course.courseId.credit}</p>
                   </div>
 
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="hover:bg-gradient-to-tr from-indigo-200 to-indigo-100 hover:text-indigo-800 "
-                  >
+                  <Button variant="outline" className="p-0">
                     <Link
-                      to={
-                        "/student/assignment/test?" + `${course.courseId._id}`
-                      }
-                      className="hover:bg-indigo-50"
-                    >
+                      to={`/student/assignment/test?courseId=${course.courseId._id}&courseName=${course.courseId.name}&facultyName=${course.facultyId.name}`}
+                      className="hover:bg-indigo-50 w-full h-full p-2">
                       view Assignment
                     </Link>
                   </Button>
