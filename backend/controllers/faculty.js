@@ -22,6 +22,7 @@ module.exports.facultySignin = async (req, res) => {
   const token = jwt.sign({ facultyId }, process.env.JWT_SECRET);
   res.json({
     message: "user Found",
+    id: facultyId,
     name: user.name,
     token: token,
   });

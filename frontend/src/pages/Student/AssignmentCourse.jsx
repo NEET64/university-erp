@@ -13,8 +13,7 @@ import { DataTable } from "@/components/DataTable";
 const AssignmentCourse = () => {
   const location = useLocation();
 
-  //get student id from localstorage
-  const studentId = "65c657dbaf0982c4aebeedc1";
+  const studentId = localStorage.getItem("id");
   const urlParams = new URLSearchParams(window.location.search);
   const courseId = urlParams.get("courseId");
   const courseName = urlParams.get("courseName");

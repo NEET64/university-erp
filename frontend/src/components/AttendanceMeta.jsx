@@ -14,9 +14,10 @@ import { Link } from "react-router-dom";
 
 export const AttendanceMeta = () => {
   const [metadata, setMetadata] = useState({});
+  const studentId = localStorage.getItem("id");
   useEffect(() => {
     axios
-      .get("http://localhost:8000/attendance/metadata/65c657dbaf0982c4aebeedc1")
+      .get("http://localhost:8000/attendance/metadata/" + studentId)
       .then((response) => {
         setMetadata(response.data.metadata);
       });

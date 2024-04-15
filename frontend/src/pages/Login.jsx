@@ -89,6 +89,7 @@ const Form = ({ belongTo }) => {
             localStorage.setItem("token", belongTo + " " + response.data.token);
             localStorage.setItem("name", response.data.name);
             localStorage.setItem("role", belongTo);
+            localStorage.setItem("id", response.data.id);
             navigate("/" + belongTo);
           })
           .catch((err) => {

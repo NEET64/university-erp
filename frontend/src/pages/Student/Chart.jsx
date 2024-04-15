@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 
 export const Chart = () => {
   const [data, setData] = useState([]);
+  const studentId = localStorage.getItem("id");
+
   // const [response, setResponse] = useState([]);
   // const [index, setIndex] = useState(0);
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/attendance/chart/65c657dbaf0982c4aebeedc1")
+      .get("http://localhost:8000/attendance/chart/" + studentId)
       .then((response) => {
         setData(response.data.data);
       })

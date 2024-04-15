@@ -17,9 +17,10 @@ export const FacultyAttendance = () => {
 
 export const FacultyAttendanceCalender = () => {
   const [facultyAttendance, setFacultyAttendance] = useState([]);
+  const facultyId = localStorage.getItem("id");
   useEffect(() => {
     axios
-      .get("http://localhost:8000/attendance/faculty/65c5e6db85c4191c88d6e2ce")
+      .get("http://localhost:8000/attendance/faculty/" + facultyId)
       .then((response) => {
         setFacultyAttendance(response.data.attendance);
       })

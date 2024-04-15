@@ -14,7 +14,6 @@ module.exports.createAssignment = async (req, res) => {
       finalStudents.push(obj);
     }
 
-    // Create assignment document
     const assignmentDoc = new Assignment({
       title: body.title,
       aim: body.aim,
@@ -57,6 +56,7 @@ module.exports.courseAssignment = async (req, res) => {
 
 // get assignments for each faculty
 module.exports.facultyAllAssignment = async (req, res) => {
+  console.log(req.params.facultyid);
   const facultyAssignments = await Assignment.find({
     faculty: req.params.facultyid,
   })

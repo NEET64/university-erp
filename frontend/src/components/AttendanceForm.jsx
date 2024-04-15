@@ -70,7 +70,7 @@ export const AttendanceForm = () => {
   });
 
   const onSubmit = (values) => {
-    values.faculty = "65e9f70d642440f8ab0026f5";
+    values.faculty = localStorage.getItem("id");
     axios
       .post("http://localhost:8000/attendance", values)
       .then((response) => {

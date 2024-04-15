@@ -18,7 +18,6 @@ import {
 import { Fragment, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { HoverCardArrow } from "@radix-ui/react-hover-card";
-import { NavLink } from "react-router-dom";
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -197,7 +196,7 @@ const StudentAttendanceEntry = ({ event }) => {
         <div className="text-lg font-bold mb-2">
           Course: {event.course.name}
         </div>
-        <div>Faculty: {event.faculty.name}</div>
+        <div>Faculty: {event.faculty && event.faculty.name}</div>
         <div>Lecture: {event.lecture}</div>
         <div>Time: {event.date}</div>
         <div

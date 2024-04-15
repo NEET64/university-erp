@@ -119,7 +119,7 @@ export function Fees() {
 
   return (
     <>
-      <Header title={"Dashboard"} />
+      <Header title={"Fees"} />
       <PlanTable data={paymentData} columns={FeesColumns} />
       <div className="bg-red-200 grow rounded-md mt-2 flex items-center justify-center text-xl text-slate-600">
         Fees collection closed on date 31-12-2023 for Year/Sem: 1 Session: June

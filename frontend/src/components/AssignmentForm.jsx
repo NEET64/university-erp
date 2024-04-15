@@ -51,16 +51,17 @@ export const AssignmentForm = () => {
       aim: "",
       class: "",
       course: "",
-      faculty: "65c5e6db85c4191c88d6e2ce",
+      faculty: "",
     },
   });
 
   const [course, setCourse] = useState([]);
   const [classes, setClasses] = useState([]);
-  const [faculty, setFaculty] = useState("65c5e6db85c4191c88d6e2ce");
   const { toast } = useToast();
+  const facultyId = localStorage.getItem("id");
 
   const onSubmit = (values) => {
+    values.faculty = facultyId;
     axios
       .post("http://localhost:8000/assignment", values)
       .then((response) => {
@@ -73,6 +74,7 @@ export const AssignmentForm = () => {
         }, 1000);
       })
       .catch((err) => {
+        console.log(err);
         toast({
           variant: "destructive",
           title: err.message,
@@ -82,7 +84,7 @@ export const AssignmentForm = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/class/faculty/" + faculty)
+      .get("http://localhost:8000/class/faculty/" + facultyId)
       .then((response) => {
         setClasses(response.data);
         // console.log("class", response.data);
@@ -91,7 +93,7 @@ export const AssignmentForm = () => {
 
   useEffect(() => {
     // get courses for curr faculty
-    axios.get("http://localhost:8000/faculty/" + faculty).then((response) => {
+    axios.get("http://localhost:8000/faculty/" + facultyId).then((response) => {
       //   console.log("coursees", response.data);
       setCourse(response.data);
     });

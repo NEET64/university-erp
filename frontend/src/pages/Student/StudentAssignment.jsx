@@ -19,13 +19,13 @@ import {
 } from "@/components/ui/card";
 
 const StudentAssignment = () => {
-  const StudentID = "65c657dbaf0982c4aebeedc1";
+  const studentId = localStorage.getItem("id");
 
   const [student, setStundent] = useState();
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/student/` + StudentID)
+      .get(`http://localhost:8000/student/` + studentId)
       .then((response) => {
         setStundent(response.data.student);
       })

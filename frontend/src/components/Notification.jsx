@@ -52,10 +52,10 @@ export const NotificationList = () => {
 const Notification = ({ src, facultyName, message, time }) => {
   return (
     <div className="flex items-center bg-white rounded-md p-4">
-      <img src={src} alt="Faculty" className="w-12 h-12 rounded-full mr-4" />
+      <img src={src} alt="Faculty" className="w-10 h-10 rounded-full mr-4" />
       <div>
         <p className="font-semibold">{facultyName}</p>
-        <p className="text-gray-600">{message}</p>
+        <p className="text-gray-600 text-sm">{message}</p>
         <p className="text-gray-500 text-xs">{time}</p>
       </div>
     </div>

@@ -170,12 +170,12 @@ export const ClassColumns = [
                     });
                   }}>
                   <Eye className="mr-2 h-4 w-4" />
-                  View Course
+                  View Class
                 </DropdownMenuItem>
 
                 <div className="hover:bg-slate-300 cursor-pointer flex justify-start w-full select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-slate-100 focus:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-slate-800 dark:focus:text-slate-50">
                   <Pencil className="mr-2 h-4 w-4" />
-                  Edit Course
+                  Edit Class
                 </div>
 
                 <DropdownMenuSeparator />
@@ -183,7 +183,7 @@ export const ClassColumns = [
                 <AlertDialog>
                   <AlertDialogTrigger className="hover:bg-red-100 cursor-pointer flex justify-start w-full select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-slate-100 focus:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-slate-800 dark:focus:text-slate-50">
                     <Trash2 className="mr-2 h-4 w-4" />
-                    Delete Course
+                    Delete Class
                   </AlertDialogTrigger>
                   <AlertDialogContent>
                     <AlertDialogHeader>
@@ -246,7 +246,7 @@ export const ClassColumns = [
                     </AlertDialogTitle>
                     <AlertDialogDescription>
                       This action cannot be undone. This will permanently change
-                      the course.
+                      the class.
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>

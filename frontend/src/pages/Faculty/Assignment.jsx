@@ -29,18 +29,19 @@ import {
 import { AssignmentColumns } from "./assignmentColumns";
 import { AssignmentForm } from "@/components/AssignmentForm";
 import { DataTable } from "@/components/DataTable";
+import { toast } from "@/components/ui/use-toast";
 
 export const Assignment = () => {
   const [assignments, setAssignments] = useState([]);
   const [course, setCourse] = useState([]);
   const [students, setStudents] = useState([]);
-  const [faculty, setFaculty] = useState("65c5e6db85c4191c88d6e2ce");
+  const facultyId = localStorage.getItem("id");
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    // get all assignments of curr faculty
+    // get all assignments of curr facultyId
     axios
-      .get("http://localhost:8000/assignment/faculty/" + faculty)
+      .get("http://localhost:8000/assignment/faculty/" + facultyId)
       .then((response) => {
         setAssignments(response.data);
       })
@@ -54,7 +55,7 @@ export const Assignment = () => {
 
   useEffect(() => {
     // get courses for curr faculty
-    axios.get("http://localhost:8000/faculty/" + faculty).then((response) => {
+    axios.get("http://localhost:8000/faculty/" + facultyId).then((response) => {
       setCourse(response.data);
     });
   }, []);
